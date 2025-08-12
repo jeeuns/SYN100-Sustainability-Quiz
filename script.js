@@ -85,8 +85,6 @@ function previousQuestion() {
     }
 }
 
-
-
 function calculateResult() {
     const scores = {
     'result1': 0,
