@@ -5,44 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Personality Quiz</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
 </head>
 <body>
-  <h1>Personality Quiz</h1>
+    <div class="container">
+    <!-- Introduction Screen -->
+        <div id="intro" class="intro-screen active">
+            <h1>Personality Quiz</h1>
+                <p class="subtitle">
+                    Quiz description, what its about and what they'll be learning
+                </p>
+        <button class="btn btn-primary start-btn" onclick="startQuiz()">Start Quiz</button>
+    </div>
 
-  <div id="quiz-container">
     <!-- Question 1 -->
-    <div class="question">
-      <p><strong>1. Question 1</strong></p>
-      <label><input type="radio" name="q1" value="A"> Option A</label><br>
-      <label><input type="radio" name="q1" value="B"> Option B</label><br>
-      <label><input type="radio" name="q1" value="C"> Option C</label>
+    <div id="question-1" class="quiz-screen">
+      <h2 class="question">1. Question 1:</h2>
+      <div class="options">
+        <div class="option" data-value="option-1A">
+          <div class="option-title">Option 1</div>
+          <div class="option-description">Description for Option 1</div>
+        </div>
+        <div class="option" data-value="option-1B">
+          <div class="option-title">Option 2</div>
+          <div class="option-description">Description for Option 2</div>
+        </div>
+        <div class="option" data-value="option-1C">
+          <div class="option-title">Option 3</div>
+          <div class="option-description">Description for Option 3</div>
+        </div>
+        <div class="option" data-value="option-1D">
+          <div class="option-title">Option 4</div>
+          <div class="option-description">Description for Option 4</div>
+        </div>
+      </div>
     </div>
 
     <!-- Question 2 -->
-    <div class="question">
-      <p><strong>2. Question 2:</strong></p>
-      <label><input type="radio" name="q2" value="A"> Option A</label><br>
-      <label><input type="radio" name="q2" value="B"> Option B</label><br>
-      <label><input type="radio" name="q2" value="C"> Option C</label>
+    <div id="question-2" class="quiz-screen">
+      <h2 class="question">2. Question 2:</h2>
+      <div class="options">
+        <div class="option" data-value="option-2A">
+          <div class="option-title">Option 1</div>
+          <div class="option-description">Description for Option 1</div>
+        </div>
+        <div class="option" data-value="option-2B">
+          <div class="option-title">Option 2</div>
+          <div class="option-description">Description for Option 2</div>
+        </div>
+        <div class="option" data-value="option-2C">
+          <div class="option-title">Option 3</div>
+          <div class="option-description">Description for Option 3</div>
+        </div>
+        <div class="option" data-value="option-2D">
+          <div class="option-title">Option 4</div>
+          <div class="option-description">Description for Option 4</div>
+        </div>
+      </div>
     </div>
 
-    <button id="submitBtn">See Results</button>
+    <!-- Question 3 -->
+    <div id="question-3" class="quiz-screen">
+      <h2 class="question">3. Question 3:</h2>
+      <div class="options">
+        <div class="option" data-value="option-3A">
+          <div class="option-title">Option 1</div>
+          <div class="option-description">Description for Option 1</div>
+        </div>
+        <div class="option" data-value="option-3B">
+          <div class="option-title">Option 2</div>
+          <div class="option-description">Description for Option 2</div>
+        </div>
+        <div class="option" data-value="option-3C">
+          <div class="option-title">Option 3</div>
+          <div class="option-description">Description for Option 3</div>
+        </div>
+        <div class="option" data-value="option-3D">
+          <div class="option-title">Option 4</div>
+          <div class="option-description">Description for Option 4</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons" id="navigation">
+      <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" style="display: none;">Previous</button>
+      <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results" id="results">
+      <div id="result-content"></div>
+      <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
+    </div>
   </div>
-
-  <!-- Results Section -->
-  <div class="results" id="resultsBox"></div>
-
-  <script src="script.js"></script>
 
   <!-- Extra content about reusable plastic -->
     <div class="extra-content" id="extraContent">
-    <h2> Other materials we may add after the quiz </h2>
-    <p>
-        balabalabala
-    </p>
-    <p>
-        balabalabala
-    </p>
+        <div class="container">
+        <h2>Other materials we may add after the quiz</h2>
+        <p>
+            balabalabala
+        </p>
+        <p>
+            balabalabala
+        </p>
+        </div>
     </div>
 </body>
 </html>

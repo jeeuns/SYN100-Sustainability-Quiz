@@ -1,56 +1,236 @@
+/* COLOR PALETTE
+#4CAF50 (Green)
+#e6f5e6 (Light Green Background)
+*/
 body {
   font-family: Arial, sans-serif;
-  max-width: 700px;
+  min-height: 100vh;
+  background-color: #d4ebc5;
+  flex-direction: column;
+  display: flex;
   margin: auto;
   padding: 20px;
+
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 h1 {
+  color: black;
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* label {
+  display: block;
+  margin-top: 5px;
+} */
+
+.extra-content {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  max-width: 600px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.extra-content .container {
+  padding: 15px;
+}
+
+.extra-content h2 {
+  color: #2c3e50;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
   text-align: center;
 }
 
+.extra-content p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Green top border -- I think it looks better without ?*/
+/* .container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #4CAF50;
+} */
+
+.subtitle {
+  color: #666;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
 .question {
-  margin-bottom: 20px;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  font-size: 1.4em;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: left;
 }
 
-label {
+.quiz-screen {
+  display: none;
+}
+
+.quiz-screen.active {
   display: block;
-  margin-top: 5px;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
+.options {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.option {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
   cursor: pointer;
-  display: block;
-  margin: 20px auto;
+  transition: all 0.3s ease;
+  text-align: left;
+  position: relative;
+}
+
+.option:hover {
+  border-color: #226521;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.option.selected {
+  border-color: #226521;
+  background: linear-gradient(135deg, #fcffd6, #cfffc0);
+  transform: scale(1.02);
+}
+
+.option-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+}
+
+.option-description {
+  color: #666;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+.nav-buttons {
+  display: none;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.nav-buttons.active {
+  display: flex;
+}
+
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #a3ed75, #08a157);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #2c3e50;
+  border: 2px solid #e0e0e0;
+}
+
+.btn-secondary:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
 .results {
   display: none;
-  margin-top: 20px;
-  /* margin-bottom: 60px; */
-  padding: 15px;
-  border: 2px solid #333;
-  background: #f9f9f9;
+  text-align: center;
 }
 
-.result-item {
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-  margin-top: 10px;
+.results.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in;
 }
 
-.result-message {
-  font-weight: bold;
-  color: darkblue;
+.result-title {
+  font-size: 2.2em;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
-.extra-content {
-  margin-top: 40px;
-  padding: 15px;
-  background: #e6f5e6;
-  border: 2px solid #4CAF50;
+.result-description {
+  color: #666;
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.restart-btn {
+  margin-top: 25px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
