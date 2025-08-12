@@ -6,25 +6,25 @@ let currentQuestion = 0;
 let answers = {};
 const totalQuestions = 3;
 
-// Personality results - can add images later
+// Personality results - add in images later
 const personalityResults = {
     'result1': {
-    image: 'img1.png',
+    image: 'img1.jpg',
     title: 'Result 1 Title',
     description: 'Description for result 1',
     },
     'result2': {
-    image: 'img2.png',
+    image: 'img2.jpg',
     title: 'Result 2 Title',
     description: 'Description for result 2',
     },
     'result3': {
-    image: 'img3.png',
+    image: 'img3.jpg',
     title: 'Result 3 Title',
     description: 'Description for result 3',
     },
     'result4': {
-    image: 'img4.png',
+    image: 'img4.jpg',
     title: 'Result 4 Title',
     description: 'Description for result 4',
     }
