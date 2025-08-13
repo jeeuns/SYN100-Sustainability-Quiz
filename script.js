@@ -4,7 +4,7 @@
 
 let currentQuestion = 0;
 let answers = {};
-const totalQuestions = 3;
+const totalQuestions = 3; //dont forget to update when making more questions
 
 // Personality results - add in images later
 const personalityResults = {
@@ -112,6 +112,8 @@ function calculateResult() {
     if (answers[3] === 'option-3D') scores['result4'] += 1;
 
     // Find the personality with the highest score
+    // Logic: loops through the array of scores (with their points) and returns the key with the highest value
+    // e.g. {result1: 5, result2: 3, result3: 4, result4: 2}, itll compare result1 with result2, 5 > 3, so returns , then loops until highest value key is found.
     return Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
 }
 
@@ -130,6 +132,8 @@ function showResults() {
     <h2 class="result-title">${personality.title}</h2>
     <p class="result-description">${personality.description}</p>
     `;
+    //Things to implement later: a recommendation section based on results
+    //e.g. "Here are some sustainable practices you can try"
 
     document.getElementById('result-content').innerHTML = resultHTML;
     document.getElementById('results').classList.add('active');
