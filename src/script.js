@@ -12,22 +12,49 @@ const personalityResults = {
     image: 'img1.jpg',
     title: 'Result 1 Title',
     description: 'Description for result 1',
+    threshhold: 80 //80% average score
     },
     'result2': {
     image: 'img2.jpg',
     title: 'Result 2 Title',
     description: 'Description for result 2',
+    threshhold: 60 //60-79% average score
     },
     'result3': {
     image: 'img3.jpg',
     title: 'Result 3 Title',
     description: 'Description for result 3',
+    threshhold: 40 //40-59% average score
     },
     'result4': {
     image: 'img4.jpg',
     title: 'Result 4 Title',
     description: 'Description for result 4',
+    threshhold: 0 //0-39% average score
     }
+};
+
+const categories = {
+    'sustainablePurchasing': {
+        name: 'Sustainable Purchasing',
+        description: 'sustainable purchasing practice',
+        image: 'sustainable-purchasing.jpg',
+    },
+    'environmentalAwareness': {
+        name: 'Environmental Awareness',
+        description: 'understanding of fast fashion impact',
+        image: 'environmental-awareness.jpg',
+    },
+    'clothingCare': {
+        name: 'Clothing Care',
+        description: 'best practices for clothing care',
+        image: 'clothing-care.jpg',
+    },
+    'willingness': {
+        name: 'Willingness to change habits',
+        description: 'willingness to adopt sustainable practices',
+        image: 'willingness.jpg',
+    },
 };
 
 function startQuiz() {
@@ -85,55 +112,163 @@ function previousQuestion() {
     }
 }
 
-function calculateResult() {
+function calculateCategoryScores() {
     const scores = {
-    'result1': 0,
-    'result2': 0,
-    'result3': 0,
-    'result4': 0
+    'sustainablePurchasing': 0,
+    'environmentalAwareness': 0,
+    'clothingCare': 0,
+    'willingness': 0
     };
 
-    // Question 1 scoring
-    if (answers[1] === 'option-1A') scores['result1'] += 3;
-    if (answers[1] === 'option-1B') scores['result2'] += 3;
-    if (answers[1] === 'option-1C') scores['result3'] += 3;
-    if (answers[1] === 'option-1D') scores['result4'] += 3;
+// Question 1 scoring - adjust these based on actual questions
+    if (answers[1] === 'option-1A') {
+        scores['sustainablePurchasing'] += 25;
+        scores['environmentalAwareness'] += 20;
+    }
+    if (answers[1] === 'option-1B') {
+        scores['sustainablePurchasing'] += 15;
+        scores['willingness'] += 20;
+    }
+    if (answers[1] === 'option-1C') {
+        scores['clothingCare'] += 20;
+        scores['willingness'] += 15;
+    }
+    if (answers[1] === 'option-1D') {
+        scores['sustainablePurchasing'] += 5;
+        scores['environmentalAwareness'] += 10;
+    }
 
     // Question 2 scoring
-    if (answers[2] === 'option-2A') scores['result1'] += 2;
-    if (answers[2] === 'option-2B') scores['result2'] += 2;
-    if (answers[2] === 'option-2C') scores['result3'] += 2;
-    if (answers[2] === 'option-2D') scores['result4'] += 2;
+    if (answers[2] === 'option-2A') {
+        scores['clothingCare'] += 25;
+        scores['environmentalAwareness'] += 20;
+    }
+    if (answers[2] === 'option-2B') {
+        scores['clothingCare'] += 15;
+        scores['willingness'] += 20;
+    }
+    if (answers[2] === 'option-2C') {
+        scores['clothingCare'] += 10;
+        scores['sustainablePurchasing'] += 15;
+    }
+    if (answers[2] === 'option-2D') {
+        scores['clothingCare'] += 5;
+        scores['willingness'] += 10;
+    }
 
     // Question 3 scoring
-    if (answers[3] === 'option-3A') scores['result1'] += 1;
-    if (answers[3] === 'option-3B') scores['result2'] += 1;
-    if (answers[3] === 'option-3C') scores['result3'] += 1;
-    if (answers[3] === 'option-3D') scores['result4'] += 1;
+    if (answers[3] === 'option-3A') {
+        scores['willingness'] += 25;
+        scores['environmentalAwareness'] += 20;
+    }
+    if (answers[3] === 'option-3B') {
+        scores['willingness'] += 15;
+        scores['sustainablePurchasing'] += 20;
+    }
+    if (answers[3] === 'option-3C') {
+        scores['willingness'] += 10;
+        scores['clothingCare'] += 15;
+    }
+    if (answers[3] === 'option-3D') {
+        scores['willingness'] += 5;
+        scores['environmentalAwareness'] += 10;
+    }
 
-    // Find the personality with the highest score
-    // Logic: loops through the array of scores (with their points) and returns the key with the highest value
-    // e.g. {result1: 5, result2: 3, result3: 4, result4: 2}, itll compare result1 with result2, 5 > 3, so returns , then loops until highest value key is found.
-    return Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+    return scores;
+}
+//PERSONALITY RESULT LOGIC
+function determineResultType(categoryScores) {
+    // Calculate average percentage across all categories
+    const totalScore = Object.values(categoryScores).reduce((sum, score) => sum + score, 0);
+    const averagePercentage = totalScore / 4; // 4 categories, max 50 points each = 200 total, so /4 gives percentage
+
+    // Find the appropriate result type based on average percentage
+    if (averagePercentage >= personalityResults['result1'].threshold) {
+        return 'result1';
+    } else if (averagePercentage >= personalityResults['result2'].threshold) {
+        return 'result2';
+    } else if (averagePercentage >= personalityResults['result3'].threshold) {
+        return 'result3';
+    } else {
+        return 'result4'; // Default case for lowest score
+    }
 }
 
+function generateCareCardContent(categoryScores, resultType) {
+    // Find the lowest scoring category for personalized advice
+    const lowestCategory = Object.keys(categoryScores).reduce((a, b) => 
+        categoryScores[a] < categoryScores[b] ? a : b
+    );
+
+    const careCardContent = {
+        'sustainablePurchasing': {
+            header: 'purchase sustainably',
+            description: 'Focus on buying fewer, higher-quality pieces made from natural or recycled materials. Research brands',
+            resourceLink: 'link'
+        },
+        'environmentalAwareness': {
+            header: 'Expand thy environmental awareness',
+            description: 'Learn about the fashion industry\'s impact on water usage, chemical pollution, and carbon emissions.',
+            resourceLink: 'link'
+        },
+        'clothingCare': {
+            header: 'Clothing Care & Practices',
+            description: 'Extend your clothes\' lifespan through proper washing, storage, and repair techniques. Small changes in care can dramatically reduce your environmental impact.',
+            resourceLink: 'link'
+        },
+        'willingness': {
+            header: 'Willingness to Change Habits',
+            description: 'buy second-hand, participate in clothing swaps, or trying a capsule wardrobe approach.',
+            resourceLink: 'link'
+        }
+    };
+
+    return careCardContent[lowestCategory];
+}
+
+// RESULT SCREEN - shows all categories, the card, the carecard.
 function showResults() {
     // Hide current question and navigation
     document.getElementById(`question-${currentQuestion}`).classList.remove('active');
     document.getElementById('navigation').classList.remove('active');
 
-    const personalityType = calculateResult();
-    const personality = personalityResults[personalityType];
+    const categoryScores = calculateCategoryScores();
+    const resultType = determineResultType(categoryScores);
+    const result = personalityResults[resultType];
+    const careCard = generateCareCardContent(categoryScores, resultType);
 
     const resultHTML = `
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="${personality.image}" alt="Result Image" style="width: 200px; height: 200px; border-radius: 12px; margin-bottom: 20px;">
-    </div>
-    <h2 class="result-title">${personality.title}</h2>
-    <p class="result-description">${personality.description}</p>
+        <div class="result-header">
+            <h2 class="result-section-title">Your Result</h2>
+            <div class="result-image-container">
+                <div class="result-character-image">${result.image}</div>
+            </div>
+            <h3 class="result-character-title">${result.title}</h3>
+            <p class="result-character-description">${result.description}</p>
+        </div>
+
+        <div class="category-scores-section">
+            <div class="category-row">
+                ${Object.keys(categories).map(key => 
+                    `<div class="category-item">
+                        <div class="category-image">${categories[key].icon}</div>
+                        <div class="category-title">${categories[key].name}</div>
+                        <div class="category-score">${categoryScores[key]}%</div>
+                        <div class="category-description">${categories[key].description}</div>
+                    </div>`
+                ).join('')}
+            </div>
+        </div>
+
+        <div class="care-card-section">
+            <h2 class="care-card-title">Your Care Card</h2>
+            <h3 class="care-card-header">${careCard.header}</h3>
+            <p class="care-card-description">${careCard.description}</p>
+            <a href="${careCard.resourceLink}" target="_blank" class="care-card-resource-link">
+                Learn More →
+            </a>
+        </div>
     `;
-    //Things to implement later: a recommendation section based on results
-    //e.g. "Here are some sustainable practices you can try"
 
     document.getElementById('result-content').innerHTML = resultHTML;
     document.getElementById('results').classList.add('active');
