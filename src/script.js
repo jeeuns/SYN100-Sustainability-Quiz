@@ -213,7 +213,7 @@ function generateCareCardContent(categoryScores, resultType) {
         },
         'clothingCare': {
             header: 'Clothing Care & Practices',
-            description: 'Extend your clothes\' lifespan through proper washing, storage, and repair techniques. Small changes in care can dramatically reduce your environmental impact.',
+            description: 'Extend your clothes\' lifespan through proper washing and repair. Small changes in care can dramatically reduce your environmental impact.',
             resourceLink: 'link'
         },
         'willingness': {
@@ -226,6 +226,24 @@ function generateCareCardContent(categoryScores, resultType) {
     return careCardContent[lowestCategory];
 }
 
+// Dont like the percentage outcome, new function to calculate category scores out of 10
+function convertScoresToOutOf10(categoryScores) {
+    const scoresOutOf10 = {};
+    
+    Object.keys(categoryScores).forEach(key => {
+        // Convert percentage (0-50) to scale of 10
+        // Since max score per category is 50, divide by 5 to get out of 10
+        scoresOutOf10[key] = Math.round(categoryScores[key] / 5);
+        
+        // Ensure score doesn't exceed 10
+        if (scoresOutOf10[key] > 10) {
+            scoresOutOf10[key] = 10;
+        }
+    });
+    
+    return scoresOutOf10;
+}
+
 // RESULT SCREEN - shows all categories, the card, the carecard.
 function showResults() {
     // Hide current question and navigation
@@ -233,6 +251,7 @@ function showResults() {
     document.getElementById('navigation').classList.remove('active');
 
     const categoryScores = calculateCategoryScores();
+    const scoresOutOf10 = convertScoresToOutOf10(categoryScores);
     const resultType = determineResultType(categoryScores);
     const result = personalityResults[resultType];
     const careCard = generateCareCardContent(categoryScores, resultType);
@@ -251,9 +270,9 @@ function showResults() {
             <div class="category-row">
                 ${Object.keys(categories).map(key => 
                     `<div class="category-item">
-                        <div class="category-image">${categories[key].icon}</div>
+                        <div class="category-image">${categories[key].icon || ''}</div>
                         <div class="category-title">${categories[key].name}</div>
-                        <div class="category-score">${categoryScores[key]}%</div>
+                        <div class="category-score">${scoresOutOf10[key]}/10</div>
                         <div class="category-description">${categories[key].description}</div>
                     </div>`
                 ).join('')}
