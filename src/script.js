@@ -52,8 +52,8 @@ const categories = {
     },
     'attitude': {
         name: 'Climate Attitude',
-        description: 'willingness to adopt sustainable practices + How it affects your mental health',
-        image: 'willingness.jpg',
+        description: 'sustainable practices for your mental health',
+        image: 'attitude.jpg',
     },
 };
 
@@ -299,7 +299,7 @@ function calculateCategoryScores() {
         scores['sustainablePurchasing'] += 5;
         scores['environmentalAwareness'] += 10;
     }
-    
+
     // Question 11 scoring
     if (answers[11] === 'option-11A') {
         scores['sustainablePurchasing'] += 25;
@@ -374,6 +374,8 @@ function calculateCategoryScores() {
 
     return scores;
 }
+
+
 //PERSONALITY RESULT LOGIC
 function determineResultType(categoryScores) {
     // Calculate average percentage across all categories
@@ -391,6 +393,7 @@ function determineResultType(categoryScores) {
         return 'result4'; // Default case for lowest score
     }
 }
+
 
 function generateCareCardContent(categoryScores, resultType) {
     // Find the lowest scoring category for personalized advice
@@ -414,8 +417,8 @@ function generateCareCardContent(categoryScores, resultType) {
             description: 'Extend your clothes\' lifespan through proper washing and repair. Small changes in care can dramatically reduce your environmental impact.',
             resourceLink: 'link'
         },
-        'willingness': {
-            header: 'Willingness to Change Habits',
+        'attitude': {
+            header: 'Climate Attitude',
             description: 'buy second-hand, participate in clothing swaps, or trying a capsule wardrobe approach.',
             resourceLink: 'link'
         }
