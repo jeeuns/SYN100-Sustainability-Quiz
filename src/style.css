@@ -304,18 +304,19 @@ h1 {
 
 .category-item {
   display: grid;
-  grid-template-rows: 60px /* image */  64px /* title */
-                      80px /* score */  1fr /* description */;
+  grid-template-rows: 60px 64px 80px 1fr;
   row-gap: 10px;
   align-items: center;
   text-align: center;
-  padding: 10px 5px;
+  padding: 10px 0px 10px 0px;
 }
 
-/* .category-image {
+
+/* image/logo for later if we want */
+.category-image {
   width: 60px;
   height: 60px;
-  background: #4CAF50;
+  background: #b1cd98;
   border-radius: 50%;
   margin: 0 auto 10px;
   display: flex;
@@ -323,7 +324,7 @@ h1 {
   justify-content: center;
   font-size: 1.8em;
   color: white;
-} */
+}
 
 .category-image {
   display: flex;
@@ -343,10 +344,10 @@ h1 {
   color: white;
   font-size: 1.8em;
   font-weight: 700;
-  padding: 20px;
+  padding: 18px;
   border-radius: 10px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .category-description {
@@ -362,7 +363,7 @@ h1 {
   border-radius: 15px;
   padding: 30px;
   text-align: center;
-  /*border-left: 5px solid #4CAF50; */
+  /*border-left: 5px solid #4CAF50; - might remove later ?*/
 }
 
 .care-card-title {

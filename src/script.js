@@ -43,12 +43,12 @@ const categories = {
     'environmentalAwareness': {
         name: 'Environmental Awareness',
         description: 'understanding of fast fashion impact',
-        image: 'environmental-awareness.jpg',
+        icon: '🌏',
     },
     'clothingCare': {
         name: 'Clothing Care',
         description: 'best practices for clothing care',
-        image: 'clothing-care.jpg',
+        icon: '👔',
     },
     'attitude': {
         name: 'Climate Attitude',
