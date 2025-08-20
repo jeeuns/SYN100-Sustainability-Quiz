@@ -326,20 +326,17 @@ h1 {
 .category-image {
   width: 60px;
   height: 60px;
-  background: #b1cd98;
-  border-radius: 50%;
   margin: 0 auto 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8em;
-  color: white;
 }
-
-.category-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.category-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  background: none;
 }
 
 .category-title {

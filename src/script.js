@@ -38,22 +38,22 @@ const categories = {
     'sustainablePurchasing': {
         name: 'Sustainable Purchasing',
         description: 'sustainable purchasing practice',
-        image: 'sustainable-purchasing.jpg',
+        image: 'assets/moneybag.png',
     },
     'environmentalAwareness': {
         name: 'Environmental Awareness',
         description: 'understanding of fast fashion impact',
-        icon: '🌏',
+        image: 'assets/earth.png',
     },
     'clothingCare': {
         name: 'Clothing Care',
         description: 'best practices for clothing care',
-        icon: '👔',
+        image: 'assets/tshirt.png',
     },
     'attitude': {
         name: 'Climate Attitude',
         description: 'sustainable practices for your mental health',
-        image: 'attitude.jpg',
+        image: 'assets/face.png',
     },
 };
 
@@ -471,7 +471,7 @@ function showResults() {
             <div class="category-row">
                 ${Object.keys(categories).map(key => 
                     `<div class="category-item">
-                        <div class="category-image">${categories[key].icon || ''}</div>
+                        <div class="category-image">${categories[key].image ? `<img src="${categories[key].image}" alt="${categories[key].name}" />` : (categories[key].icon || '')} </div>
                         <div class="category-title">${categories[key].name}</div>
                         <div class="category-score">${scoresOutOf10[key]}/10</div>
                         <div class="category-description">${categories[key].description}</div>
