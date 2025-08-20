@@ -141,6 +141,22 @@ h1 {
   transform: scale(1.02);
 }
 
+.option.correct {
+  border-color: #4CAF50 !important;
+  background-color: #e6f5e6 !important;
+}
+
+.option.incorrect {
+  border-color: #e74c3c !important;
+  background-color: #fceaea !important;
+}
+
+.option.selected.correct,
+.option.selected.incorrect {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 .option-title {
   font-weight: 600;
   color: #2c3e50;
