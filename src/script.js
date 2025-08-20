@@ -61,7 +61,7 @@ const categories = {
     },
 };
 
-const questionsWithSubmit = [7, 14]; // Add more if needed
+const questionsWithSubmit = [7, 13, 14]; // Add more if needed
 
 const correctAnswers = {
     7: 'option-7A',
