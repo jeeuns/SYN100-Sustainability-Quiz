@@ -299,7 +299,17 @@ h1 {
 
 .result-character-description {
   color: #666;
-  font-size: 1.1em;
+  font-size: 1.3em;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-character-quote {
+  color: #666;
+  font-size: 1.2em;
   line-height: 1.6;
   margin-bottom: 25px;
   max-width: 500px;
