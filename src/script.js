@@ -10,26 +10,30 @@ const totalQuestions = 14; //dont forget to update when making more questions
 const personalityResults = {
     'result1': {
     image: 'img1.jpg',
-    title: 'Result 1 Title',
+    title: 'Eco-Warrior Elephant',
     description: 'Description for result 1',
+    quote: '',
     threshhold: 80 //80% average score
     },
     'result2': {
     image: 'img2.jpg',
-    title: 'Result 2 Title',
-    description: 'Description for result 2',
+    title: 'Thrifty Tiger',
+    description: 'Tiger is the bold shopper who seeks treasures responsibly. They represent smart, sustainable buying habits and fiercely believe that thrifting is a way to play a part in helping their environment.',
+    quote: '“Wild about second-hand!”',
     threshhold: 60 //60-79% average score
     },
     'result3': {
     image: 'img3.jpg',
-    title: 'Result 3 Title',
-    description: 'Description for result 3',
+    title: 'Sustainable Sloth',
+    description: 'Sloth is all about slowing down, re-wearing, and taking good care of what they already own. They symbolize patience, perseverance, and know that caring for their clothes is caring for the planet.',
+    quote: '“Longer-lasting clothing is the most sustainable clothing!”',
     threshhold: 40 //40-59% average score
     },
     'result4': {
     image: 'img4.jpg',
-    title: 'Result 4 Title',
-    description: 'Description for result 4',
+    title: 'Polyester Penguin',
+    description: 'Penguin represents people who love trends and convenience but are starting to realize they may need to shift their habits. They are evolving into a greener wardrobe and turning awareness into action.',
+    quote: '“Even if you’ve been swimming in fast fashion, you can always change direction!”',
     threshhold: 0 //0-39% average score
     }
 };
@@ -525,6 +529,7 @@ function showResults() {
             </div>
             <h3 class="result-character-title">${result.title}</h3>
             <p class="result-character-description">${result.description}</p>
+            <p class="result-character-quote">${result.quote}</p>
         </div>
 
         <div class="category-scores-section">
