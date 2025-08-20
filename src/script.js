@@ -465,22 +465,22 @@ function generateCareCardContent(categoryScores, resultType) {
         'sustainablePurchasing': {
             header: 'purchase sustainably',
             description: 'Focus on buying fewer, higher-quality pieces made from natural or recycled materials. Research brands',
-            resourceLink: 'link'
+            resourceLink: 'https://www.thegoodtrade.com/features/fair-trade-clothing/'
         },
         'environmentalAwareness': {
             header: 'Expand thy environmental awareness',
             description: 'Learn about the fashion industry\'s impact on water usage, chemical pollution, and carbon emissions.',
-            resourceLink: 'link'
+            resourceLink: 'https://theflaw.org/articles/project-rapid-runway-unraveling-the-insidious-threads-of-fast-fashion/'
         },
         'clothingCare': {
             header: 'Clothing Care & Practices',
             description: 'Extend your clothes\' lifespan through proper washing and repair. Small changes in care can dramatically reduce your environmental impact.',
-            resourceLink: 'link'
+            resourceLink: 'https://www.pbs.org/newshour/science/laundry-is-a-top-source-of-microplastic-pollution-heres-how-to-clean-your-clothes-more-sustainably'
         },
         'attitude': {
             header: 'Climate Attitude',
             description: 'buy second-hand, participate in clothing swaps, or trying a capsule wardrobe approach.',
-            resourceLink: 'link'
+            resourceLink: 'https://vinatex.com/fast-fashion-fuels-mental-health-struggles-among-gen-z/'
         }
     };
 
