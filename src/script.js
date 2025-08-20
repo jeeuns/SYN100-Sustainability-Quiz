@@ -57,6 +57,14 @@ const categories = {
     },
 };
 
+const questionsWithSubmit = [7, 14]; // Add more if needed
+
+const correctAnswers = {
+    7: 'option-7A',
+    14: 'option-14B',
+    // add more correct-answer questions here
+};
+
 function startQuiz() {
     document.getElementById('intro').style.display = 'none';
     document.getElementById('question-1').classList.add('active');
@@ -75,26 +83,78 @@ function selectOption(element) {
     const questionNumber = currentQuestion;
     answers[questionNumber] = element.getAttribute('data-value');
 
+    if (questionsWithSubmit.includes(currentQuestion)) {
+        document.getElementById('submitBtn').style.display = 'inline-block';
+        document.getElementById('nextBtn').style.display = 'none';
+    } else {
+        document.getElementById('nextBtn').disabled = false;
+    }
+}
+
+function submitAnswer() {
+    const currentContainer = document.getElementById(`question-${currentQuestion}`);
+    const selectedOption = currentContainer.querySelector('.option.selected');
+
+    if (!selectedOption) return;
+
+    const allOptions = currentContainer.querySelectorAll('.option');
+    const correct = correctAnswers[currentQuestion];
+
+    allOptions.forEach(opt => {
+        opt.classList.remove('selected')
+        opt.classList.remove('correct', 'incorrect');
+        const value = opt.getAttribute('data-value');
+
+        if (value === correct) {
+            opt.classList.add('correct');
+        }
+
+        if (selectedOption.getAttribute('data-value') !== correct && selectedOption === opt) {
+            opt.classList.add('incorrect');
+        }
+    });
+
+    // Hide Submit, show Next after feedback
+    document.getElementById('submitBtn').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'inline-block';
     document.getElementById('nextBtn').disabled = false;
 }
 
 function nextQuestion() {
     if (currentQuestion < totalQuestions) {
-    document.getElementById(`question-${currentQuestion}`).classList.remove('active');
-    currentQuestion++;
-    document.getElementById(`question-${currentQuestion}`).classList.add('active');
-    
-    // Reset next button
-    document.getElementById('nextBtn').disabled = !answers[currentQuestion];
-    
-    // Show/hide previous button
-    document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
-    
-    // Update button text for last question
-    if (currentQuestion === totalQuestions) {
-        document.getElementById('nextBtn').textContent = 'Get Results';
-        document.getElementById('nextBtn').onclick = showResults;
+        document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+        currentQuestion++;
+        document.getElementById(`question-${currentQuestion}`).classList.add('active');
+
+        document.getElementById('submitBtn').style.display = questionsWithSubmit.includes(currentQuestion) ? 'inline-block' : 'none';
+        document.getElementById('nextBtn').style.display = questionsWithSubmit.includes(currentQuestion) ? 'none' : 'inline-block';
+        document.getElementById('nextBtn').disabled = !answers[currentQuestion];
+
+        document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
+
+        if (currentQuestion === totalQuestions) {
+            document.getElementById('nextBtn').textContent = 'Get Results';
+            document.getElementById('nextBtn').onclick = showResults;
+        } else {
+            document.getElementById('nextBtn').textContent = 'Next';
+            document.getElementById('nextBtn').onclick = nextQuestion;
+        }
     }
+}
+
+function goToNext() {
+    if (currentQuestion < totalQuestions) {
+        document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+        currentQuestion++;
+        document.getElementById(`question-${currentQuestion}`).classList.add('active');
+
+        document.getElementById('nextBtn').disabled = !answers[currentQuestion];
+        document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
+
+        if (currentQuestion === totalQuestions) {
+            document.getElementById('nextBtn').textContent = 'Get Results';
+            document.getElementById('nextBtn').onclick = showResults;
+        }
     }
 }
 
@@ -517,6 +577,12 @@ function restartQuiz() {
     document.getElementById('nextBtn').onclick = nextQuestion;
     document.getElementById('nextBtn').disabled = true;
     document.getElementById('prevBtn').style.display = 'none';
+
+    document.querySelectorAll('.option').forEach(opt => {
+        opt.classList.remove('selected', 'correct', 'incorrect');
+    });
+    document.getElementById('submitBtn').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'inline-block';
 }
 
 // Event delegation for option selection
