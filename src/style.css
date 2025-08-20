@@ -151,12 +151,6 @@ h1 {
   background-color: #fceaea !important;
 }
 
-.option.selected.correct,
-.option.selected.incorrect {
-  transform: none !important;
-  box-shadow: none !important;
-}
-
 .option-title {
   font-weight: 600;
   color: #2c3e50;
