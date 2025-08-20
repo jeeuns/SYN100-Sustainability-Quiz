@@ -65,6 +65,7 @@ const questionsWithSubmit = [7, 14]; // Add more if needed
 
 const correctAnswers = {
     7: 'option-7A',
+    13: 'option-13C',
     14: 'option-14B',
     // add more correct-answer questions here
 };
