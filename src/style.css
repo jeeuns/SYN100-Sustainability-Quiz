@@ -104,6 +104,14 @@ h1 {
   text-align: left;
 }
 
+.hint {
+  font-size: 1em;
+  color: #666;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: left;
+}
+
 .quiz-screen {
   display: none;
 }
@@ -149,6 +157,11 @@ h1 {
 .option.incorrect {
   border-color: #e74c3c !important;
   background-color: #fceaea !important;
+}
+
+.option.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .option-title {

@@ -1,9 +1,7 @@
-// document.getElementById("submitBtn").addEventListener("click", function () {
-//   const resultsBox = document.getElementById("resultsBox");
-//   resultsBox.innerHTML = "";
-
 let currentQuestion = 0;
 let answers = {};
+let questionSubmitted = {};
+
 const totalQuestions = 14; //dont forget to update when making more questions
 
 // Personality results - add in images later
@@ -13,28 +11,28 @@ const personalityResults = {
     title: 'Eco-Warrior Elephant',
     description: 'Description for result 1',
     quote: '',
-    threshhold: 80 //80% average score
+    threshold: 80 //80% average score
     },
     'result2': {
     image: 'img2.jpg',
     title: 'Thrifty Tiger',
     description: 'Tiger is the bold shopper who seeks treasures responsibly. They represent smart, sustainable buying habits and fiercely believe that thrifting is a way to play a part in helping their environment.',
     quote: '“Wild about second-hand!”',
-    threshhold: 60 //60-79% average score
+    threshold: 60 //60-79% average score
     },
     'result3': {
     image: 'img3.jpg',
     title: 'Sustainable Sloth',
     description: 'Sloth is all about slowing down, re-wearing, and taking good care of what they already own. They symbolize patience, perseverance, and know that caring for their clothes is caring for the planet.',
     quote: '“Longer-lasting clothing is the most sustainable clothing!”',
-    threshhold: 40 //40-59% average score
+    threshold: 40 //40-59% average score
     },
     'result4': {
     image: 'img4.jpg',
     title: 'Polyester Penguin',
     description: 'Penguin represents people who love trends and convenience but are starting to realize they may need to shift their habits. They are evolving into a greener wardrobe and turning awareness into action.',
-    quote: '“Even if you’ve been swimming in fast fashion, you can always change direction!”',
-    threshhold: 0 //0-39% average score
+    quote: '“Even if you\ve been swimming in fast fashion, you can always change direction!”',
+    threshold: 0 //0-39% average score
     }
 };
 
@@ -77,20 +75,49 @@ function startQuiz() {
     currentQuestion = 1;
 }
 
+function clearQuestionState(questionNum) {
+    const currentContainer = document.getElementById(`question-${questionNum}`);
+    const allOptions = currentContainer.querySelectorAll('.option');
+
+    allOptions.forEach(opt => {
+        opt.classList.remove('selected', 'incorrect', 'disabled');
+    });
+
+    questionSubmitted[questionNum] = false;
+}
+
 function selectOption(element) {
     const questionContainer = element.closest('.quiz-screen');
+    const questionNumber = currentQuestion;
+    
+    // If this is a submit question and it's already been submitted correctly, don't allow changes
+    if (questionsWithSubmit.includes(questionNumber) && 
+        questionSubmitted[questionNumber] && 
+        answers[questionNumber] === correctAnswers[questionNumber]) {
+        return;
+    }
+    
+    // Clear any previous feedback for submit questions
+    if (questionsWithSubmit.includes(questionNumber)) {
+        const allOptions = questionContainer.querySelectorAll('.option');
+        allOptions.forEach(opt => {
+            opt.classList.remove('incorrect', 'disabled');
+        });
+    }
+    
     const options = questionContainer.querySelectorAll('.option');
-
+    
     // Unselect all options in the current question
     options.forEach(opt => opt.classList.remove('selected'));
     element.classList.add('selected');
 
-    const questionNumber = currentQuestion;
     answers[questionNumber] = element.getAttribute('data-value');
 
     if (questionsWithSubmit.includes(currentQuestion)) {
         document.getElementById('submitBtn').style.display = 'inline-block';
         document.getElementById('nextBtn').style.display = 'none';
+        // Reset submission state when a new option is selected
+        questionSubmitted[currentQuestion] = false;
     } else {
         document.getElementById('nextBtn').disabled = false;
     }
@@ -104,38 +131,38 @@ function submitAnswer() {
 
     const allOptions = currentContainer.querySelectorAll('.option');
     const correct = correctAnswers[currentQuestion];
+    const selectedValue = selectedOption.getAttribute('data-value');
+    questionSubmitted[currentQuestion] = true;
 
-    allOptions.forEach(opt => {
-        opt.classList.remove('selected')
-        opt.classList.remove('correct', 'incorrect');
-        const value = opt.getAttribute('data-value');
+    // only highlight incorrect answers
+    if (selectedValue !== correct) {
+        selectedOption.classList.add('incorrect');
+        document.getElementById('nextBtn').style.display = 'none';
+    } else {
+        // move to next question
+        setTimeout(() => {
+            nextQuestion();
+        }, 0); 
+    }
 
-        if (value === correct) {
-            opt.classList.add('correct');
-        }
+    //UPDATE: this caused the user to clikc submit then next, instead of just moving to the next question.
 
-        if (selectedOption.getAttribute('data-value') !== correct && selectedOption === opt) {
-            opt.classList.add('incorrect');
-        }
-    });
-
-    // Hide Submit, show Next after feedback
-    document.getElementById('submitBtn').style.display = 'none';
-    document.getElementById('nextBtn').style.display = 'inline-block';
-    document.getElementById('nextBtn').disabled = false;
+    // // Hide Submit, show Next after feedback
+    // document.getElementById('submitBtn').style.display = 'none';
+    // document.getElementById('nextBtn').style.display = 'inline-block';
+    // document.getElementById('nextBtn').disabled = false;
 }
 
 function nextQuestion() {
     if (currentQuestion < totalQuestions) {
         document.getElementById(`question-${currentQuestion}`).classList.remove('active');
         currentQuestion++;
-        document.getElementById(`question-${currentQuestion}`).classList.add('active');
+        
+        const nextQuestionEl = document.getElementById(`question-${currentQuestion}`);
+        nextQuestionEl.classList.add('active');
 
-        document.getElementById('submitBtn').style.display = questionsWithSubmit.includes(currentQuestion) ? 'inline-block' : 'none';
-        document.getElementById('nextBtn').style.display = questionsWithSubmit.includes(currentQuestion) ? 'none' : 'inline-block';
-        document.getElementById('nextBtn').disabled = !answers[currentQuestion];
-
-        document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
+        // Update button states
+        updateNavigationButtons();
 
         if (currentQuestion === totalQuestions) {
             document.getElementById('nextBtn').textContent = 'Get Results';
@@ -147,35 +174,81 @@ function nextQuestion() {
     }
 }
 
-function goToNext() {
-    if (currentQuestion < totalQuestions) {
-        document.getElementById(`question-${currentQuestion}`).classList.remove('active');
-        currentQuestion++;
-        document.getElementById(`question-${currentQuestion}`).classList.add('active');
-
-        document.getElementById('nextBtn').disabled = !answers[currentQuestion];
-        document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
-
-        if (currentQuestion === totalQuestions) {
-            document.getElementById('nextBtn').textContent = 'Get Results';
-            document.getElementById('nextBtn').onclick = showResults;
-        }
-    }
-}
-
 function previousQuestion() {
     if (currentQuestion > 1) {
-    document.getElementById(`question-${currentQuestion}`).classList.remove('active');
-    currentQuestion--;
-    document.getElementById(`question-${currentQuestion}`).classList.add('active');
-    
-    // Update buttons
-    document.getElementById('nextBtn').disabled = false;
-    document.getElementById('nextBtn').textContent = 'Next';
-    document.getElementById('nextBtn').onclick = nextQuestion;
-    document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
+        document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+        currentQuestion--;
+        document.getElementById(`question-${currentQuestion}`).classList.add('active');
+        
+        // Clear any feedback states when going back
+        clearQuestionState(currentQuestion);
+
+        updateNavigationButtons();
+        
+        document.getElementById('nextBtn').textContent = 'Next';
+        document.getElementById('nextBtn').onclick = nextQuestion;
     }
 }
+
+function updateNavigationButtons() {
+    const isSubmitQuestion = questionsWithSubmit.includes(currentQuestion);
+    const hasAnswer = answers[currentQuestion];
+    const isSubmitted = questionSubmitted[currentQuestion];
+    const hasCorrectAnswer = hasAnswer && answers[currentQuestion] === correctAnswers[currentQuestion];
+    const isLast = currentQuestion >= totalQuestions;
+    
+    // Show/hide previous button
+    document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
+    
+    if (isSubmitQuestion) {
+        if (!hasAnswer) {
+            // No answer selected yet
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'inline-block';
+            document.getElementById('nextBtn').disabled = true;
+        } else if (!isSubmitted) {
+            // Answer selected but not submitted
+            document.getElementById('submitBtn').style.display = 'inline-block';
+            document.getElementById('nextBtn').style.display = 'none';
+        } else if (isSubmitted && hasCorrectAnswer && isLast) {
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'inline-block';
+            document.getElementById('nextBtn').disabled = false;
+            document.getElementById('nextBtn').textContent = 'Get Results';
+            document.getElementById('nextBtn').onclick = showResults;
+        } else if (isSubmitted && hasCorrectAnswer) {
+            // Correct answer submitted
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'inline-block';
+            document.getElementById('nextBtn').disabled = false;
+        } else {
+            // Incorrect answer submitted - keep submit button for retry
+            document.getElementById('submitBtn').style.display = 'inline-block';
+            document.getElementById('nextBtn').style.display = 'none';
+        }
+    } else {
+        // Regular question
+        document.getElementById('submitBtn').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'inline-block';
+        document.getElementById('nextBtn').disabled = !hasAnswer;
+    }
+}
+
+// function goToNext() {
+//     if (currentQuestion < totalQuestions) {
+//         document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+//         currentQuestion++;
+//         document.getElementById(`question-${currentQuestion}`).classList.add('active');
+
+//         document.getElementById('nextBtn').disabled = !answers[currentQuestion];
+//         document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
+
+//         if (currentQuestion === totalQuestions) {
+//             document.getElementById('nextBtn').textContent = 'Get Results';
+//             document.getElementById('nextBtn').onclick = showResults;
+//         }
+//     }
+// }
 
 function calculateCategoryScores() {
     const scores = {
