@@ -75,17 +75,6 @@ function startQuiz() {
     currentQuestion = 1;
 }
 
-function clearQuestionState(questionNum) {
-    const currentContainer = document.getElementById(`question-${questionNum}`);
-    const allOptions = currentContainer.querySelectorAll('.option');
-
-    allOptions.forEach(opt => {
-        opt.classList.remove('selected', 'incorrect', 'disabled');
-    });
-
-    questionSubmitted[questionNum] = false;
-}
-
 function selectOption(element) {
     const questionContainer = element.closest('.quiz-screen');
     const questionNumber = currentQuestion;
@@ -113,14 +102,12 @@ function selectOption(element) {
 
     answers[questionNumber] = element.getAttribute('data-value');
 
+    // Reset submission state when a new option is selected for submit questions
     if (questionsWithSubmit.includes(currentQuestion)) {
-        document.getElementById('submitBtn').style.display = 'inline-block';
-        document.getElementById('nextBtn').style.display = 'none';
-        // Reset submission state when a new option is selected
         questionSubmitted[currentQuestion] = false;
-    } else {
-        document.getElementById('nextBtn').disabled = false;
     }
+
+    updateNavigationButtons();
 }
 
 function submitAnswer() {
@@ -129,20 +116,28 @@ function submitAnswer() {
 
     if (!selectedOption) return;
 
-    const allOptions = currentContainer.querySelectorAll('.option');
     const correct = correctAnswers[currentQuestion];
     const selectedValue = selectedOption.getAttribute('data-value');
+    const isLastQuestion = currentQuestion === totalQuestions;
+
     questionSubmitted[currentQuestion] = true;
 
-    // only highlight incorrect answers
     if (selectedValue !== correct) {
+        // Incorrect answer - show feedback
         selectedOption.classList.add('incorrect');
-        document.getElementById('nextBtn').style.display = 'none';
+        updateNavigationButtons();
     } else {
-        // move to next question
-        setTimeout(() => {
-            nextQuestion();
-        }, 0); 
+        // Correct answer
+        if (isLastQuestion) {
+            // For last question with correct answer, go straight to results
+            showResults();
+            return; // Exit early to prevent any further processing
+        } else {
+            // For non-final questions, automatically move to next question
+            setTimeout(() => {
+                nextQuestion();
+            }, );
+        }
     }
 
     //UPDATE: this caused the user to clikc submit then next, instead of just moving to the next question.
@@ -195,7 +190,7 @@ function updateNavigationButtons() {
     const hasAnswer = answers[currentQuestion];
     const isSubmitted = questionSubmitted[currentQuestion];
     const hasCorrectAnswer = hasAnswer && answers[currentQuestion] === correctAnswers[currentQuestion];
-    const isLast = currentQuestion >= totalQuestions;
+    const isLastQuestion = currentQuestion === totalQuestions;
     
     // Show/hide previous button
     document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
@@ -206,33 +201,41 @@ function updateNavigationButtons() {
             document.getElementById('submitBtn').style.display = 'none';
             document.getElementById('nextBtn').style.display = 'inline-block';
             document.getElementById('nextBtn').disabled = true;
+            document.getElementById('nextBtn').textContent = isLastQuestion ? 'Get Results' : 'Next';
+            document.getElementById('nextBtn').onclick = isLastQuestion ? showResults : nextQuestion;
         } else if (!isSubmitted) {
             // Answer selected but not submitted
             document.getElementById('submitBtn').style.display = 'inline-block';
             document.getElementById('nextBtn').style.display = 'none';
-        } else if (isSubmitted && hasCorrectAnswer && isLast) {
-            document.getElementById('submitBtn').style.display = 'none';
-            document.getElementById('nextBtn').style.display = 'inline-block';
-            document.getElementById('nextBtn').disabled = false;
-            document.getElementById('nextBtn').textContent = 'Get Results';
-            document.getElementById('nextBtn').onclick = showResults;
         } else if (isSubmitted && hasCorrectAnswer) {
-            // Correct answer submitted
+            // Correct answer submitted - this should only happen for non-last questions
+            // because last question goes directly to results
             document.getElementById('submitBtn').style.display = 'none';
             document.getElementById('nextBtn').style.display = 'inline-block';
             document.getElementById('nextBtn').disabled = false;
+            document.getElementById('nextBtn').textContent = 'Next';
+            document.getElementById('nextBtn').onclick = nextQuestion;
         } else {
-            // Incorrect answer submitted - keep submit button for retry
+            // Incorrect answer submitted - show submit button for retry
             document.getElementById('submitBtn').style.display = 'inline-block';
             document.getElementById('nextBtn').style.display = 'none';
         }
     } else {
-        // Regular question
+        // Regular question (no submit required)
         document.getElementById('submitBtn').style.display = 'none';
         document.getElementById('nextBtn').style.display = 'inline-block';
         document.getElementById('nextBtn').disabled = !hasAnswer;
+        if (isLastQuestion) {
+            document.getElementById('nextBtn').textContent = 'Get Results';
+            document.getElementById('nextBtn').onclick = showResults;
+        } else {
+            document.getElementById('nextBtn').textContent = 'Next';
+            document.getElementById('nextBtn').onclick = nextQuestion;
+        }
     }
 }
+
+//Doesn't work with the "choose the correct answer" questions - updated with previous function
 
 // function goToNext() {
 //     if (currentQuestion < totalQuestions) {
