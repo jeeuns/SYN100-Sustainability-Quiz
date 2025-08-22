@@ -4,6 +4,15 @@ let questionSubmitted = {};
 
 const totalQuestions = 14; //dont forget to update when making more questions
 
+const questionsWithSubmit = [7, 13, 14]; // Add more if needed
+
+const correctAnswers = {
+    7: 'option-7A',
+    13: 'option-13C',
+    14: 'option-14B',
+    // add more correct-answer questions here
+};
+
 // Personality results - add in images later
 const personalityResults = {
     'result1': {
@@ -57,15 +66,6 @@ const categories = {
         description: 'sustainable practices for your mental health',
         image: 'assets/face.png',
     },
-};
-
-const questionsWithSubmit = [7, 13, 14]; // Add more if needed
-
-const correctAnswers = {
-    7: 'option-7A',
-    13: 'option-13C',
-    14: 'option-14B',
-    // add more correct-answer questions here
 };
 
 function startQuiz() {
