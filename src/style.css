@@ -5,7 +5,13 @@
 body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
+  background-image: url("../assets/Background.png");
   background-color: #d4ebc5;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   flex-direction: column;
   display: flex;
   margin: auto;
