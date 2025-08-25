@@ -7,10 +7,11 @@ body {
   min-height: 100vh;
   background-image: url("../assets/Background.png");
   background-color: #d4ebc5;
+  
 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: flex;
 
   flex-direction: column;
   display: flex;
