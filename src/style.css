@@ -5,7 +5,14 @@
 body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
+  background-image: url("../assets/Background.png");
   background-color: #d4ebc5;
+  
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: flex;
+
   flex-direction: column;
   display: flex;
   margin: auto;
@@ -104,6 +111,14 @@ h1 {
   text-align: left;
 }
 
+.hint {
+  font-size: 1em;
+  color: #666;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: left;
+}
+
 .quiz-screen {
   display: none;
 }
@@ -149,6 +164,11 @@ h1 {
 .option.incorrect {
   border-color: #e74c3c !important;
   background-color: #fceaea !important;
+}
+
+.option.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .option-title {
@@ -299,7 +319,17 @@ h1 {
 
 .result-character-description {
   color: #666;
-  font-size: 1.1em;
+  font-size: 1.3em;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-character-quote {
+  color: #666;
+  font-size: 1.2em;
   line-height: 1.6;
   margin-bottom: 25px;
   max-width: 500px;
