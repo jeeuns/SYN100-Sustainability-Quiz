@@ -19,7 +19,7 @@ const personalityResults = {
     image: 'img1.jpg',
     title: 'Eco-Warrior Elephant',
     description: 'Description for result 1',
-    quote: '',
+    quote: '"Speaking up for people, the planet, and fair fashion.',
     threshold: 80 //80% average score
     },
     'result2': {
@@ -234,24 +234,6 @@ function updateNavigationButtons() {
         }
     }
 }
-
-//Doesn't work with the "choose the correct answer" questions - updated with previous function
-
-// function goToNext() {
-//     if (currentQuestion < totalQuestions) {
-//         document.getElementById(`question-${currentQuestion}`).classList.remove('active');
-//         currentQuestion++;
-//         document.getElementById(`question-${currentQuestion}`).classList.add('active');
-
-//         document.getElementById('nextBtn').disabled = !answers[currentQuestion];
-//         document.getElementById('prevBtn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
-
-//         if (currentQuestion === totalQuestions) {
-//             document.getElementById('nextBtn').textContent = 'Get Results';
-//             document.getElementById('nextBtn').onclick = showResults;
-//         }
-//     }
-// }
 
 function calculateCategoryScores() {
     const scores = {
@@ -489,25 +471,6 @@ function calculateCategoryScores() {
 }
 
 
-//PERSONALITY RESULT LOGIC
-function determineResultType(categoryScores) {
-    // Calculate average percentage across all categories
-    const totalScore = Object.values(categoryScores).reduce((sum, score) => sum + score, 0);
-    const averagePercentage = totalScore / 4; // 4 categories, max 50 points each = 200 total, so /4 gives percentage
-
-    // Find the appropriate result type based on average percentage
-    if (averagePercentage >= personalityResults['result1'].threshold) {
-        return 'result1';
-    } else if (averagePercentage >= personalityResults['result2'].threshold) {
-        return 'result2';
-    } else if (averagePercentage >= personalityResults['result3'].threshold) {
-        return 'result3';
-    } else {
-        return 'result4'; // Default case for lowest score
-    }
-}
-
-
 function generateCareCardContent(categoryScores, resultType) {
     // Find the lowest scoring category for personalized advice
     const lowestCategory = Object.keys(categoryScores).reduce((a, b) => 
@@ -540,22 +503,52 @@ function generateCareCardContent(categoryScores, resultType) {
     return careCardContent[lowestCategory];
 }
 
-// Dont like the percentage outcome, new function to calculate category scores out of 10
+// UPDATED CONVERT SCORE FUNCTION!!
 function convertScoresToOutOf10(categoryScores) {
+    const maxPoints = {
+        'sustainablePurchasing': 185,
+        'environmentalAwareness': 155,
+        'clothingCare': 60,
+        'attitude': 105
+    };
+    
     const scoresOutOf10 = {};
     
     Object.keys(categoryScores).forEach(key => {
-        // Convert percentage (0-50) to scale of 10
-        // Since max score per category is 50, divide by 5 to get out of 10
-        scoresOutOf10[key] = Math.round(categoryScores[key] / 5);
-        
-        // Ensure score doesn't exceed 10
-        if (scoresOutOf10[key] > 10) {
-            scoresOutOf10[key] = 10;
-        }
+        scoresOutOf10[key] = Math.round((categoryScores[key] / maxPoints[key]) * 10);
+        scoresOutOf10[key] = Math.max(0, Math.min(10, scoresOutOf10[key]));
     });
     
     return scoresOutOf10;
+}
+
+// UPDATED PERSONALITY RESULT LOGIC
+function determineResultType(categoryScores) {
+    const maxPoints = {
+        'sustainablePurchasing': 185,
+        'environmentalAwareness': 155,
+        'clothingCare': 60,
+        'attitude': 105
+    };
+    // Calculate percentage for each category
+    const categoryPercentages = {};
+    let totalPercentage = 0;
+    
+    Object.keys(categoryScores).forEach(key => {
+        categoryPercentages[key] = (categoryScores[key] / maxPoints[key]) * 100;
+        totalPercentage += categoryPercentages[key];
+    });
+    
+    const averagePercentage = totalPercentage / 4;
+    if (averagePercentage >= personalityResults['result1'].threshold) {
+        return 'result1';
+    } else if (averagePercentage >= personalityResults['result2'].threshold) {
+        return 'result2';
+    } else if (averagePercentage >= personalityResults['result3'].threshold) {
+        return 'result3';
+    } else {
+        return 'result4';
+    }
 }
 
 // RESULT SCREEN - shows all categories, the card, the carecard.
@@ -645,48 +638,3 @@ document.addEventListener('click', function(e) {
     selectOption(e.target.closest('.option'));
     }
 });
-
-
-//   const resultsMap = {
-//     q1: {
-//       A: "Write some personalized results for option A",
-//       B: "Write some personalized results for option B",
-//       C: "Write some personalized results for option C"
-//     },
-//     q2: {
-//       A: "Write some personalized results for option A",
-//       B: "Write some personalized results for option B",
-//       C: "Write some personalized results for option C"
-//     }
-//   };
-
-//   const allQuestions = Object.keys(resultsMap);
-//   let allAnswered = true;
-
-//   allQuestions.forEach((qid, index) => {
-//     const selected = document.querySelector(`input[name="${qid}"]:checked`);
-//     const resultDiv = document.createElement("div");
-//     resultDiv.classList.add("result-item");
-
-//     if (selected) {
-//       const choiceValue = selected.value;
-//       resultDiv.innerHTML = `
-//         <p><strong>Question ${index + 1}:</strong></p>
-//         <p><em>You chose:</em> ${selected.parentElement.textContent.trim()}</p>
-//         <p class="result-message">${resultsMap[qid][choiceValue]}</p>
-//       `;
-//     } else {
-//       resultDiv.innerHTML = `<p><strong>Question ${index + 1}:</strong> Not answered.</p>`;
-//       allAnswered = false;
-//     }
-
-//     resultsBox.appendChild(resultDiv);
-//   });
-
-//   if (!allAnswered) {
-//     alert("Please answer all questions!");
-//     return;
-//   }
-
-//   resultsBox.style.display = "block";
-// });
