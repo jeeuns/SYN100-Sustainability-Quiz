@@ -187,38 +187,30 @@ function calculateCategoryScores() {
 
 // Question 1 scoring - adjust these based on actual questions
     if (answers[1] === 'option-1A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
+        scores['sustainablePurchasing'] += 10;
+        scores['attitude'] += 5;
     }
     if (answers[1] === 'option-1B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
+        scores['sustainablePurchasing'] += 20;
+        scores['attitude'] += 10;
     }
     if (answers[1] === 'option-1C') {
-        scores['clothingCare'] += 20;
+        scores['sustainablePurchasing'] += 30;
         scores['attitude'] += 15;
-    }
-    if (answers[1] === 'option-1D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
     }
 
     // Question 2 scoring
     if (answers[2] === 'option-2A') {
-        scores['clothingCare'] += 25;
-        scores['environmentalAwareness'] += 20;
+        scores['attitude'] += 5;
+        scores['environmentalAwareness'] += 15;
     }
     if (answers[2] === 'option-2B') {
-        scores['clothingCare'] += 15;
-        scores['attitude'] += 20;
+        scores['environmentalAwareness'] += 10;
+        scores['attitude'] += 10;
     }
     if (answers[2] === 'option-2C') {
-        scores['clothingCare'] += 10;
-        scores['sustainablePurchasing'] += 15;
-    }
-    if (answers[2] === 'option-2D') {
-        scores['clothingCare'] += 5;
-        scores['attitude'] += 10;
+        scores['attitude'] += 15;
+        scores['environmentalAwareness'] += 5;
     }
 
     // Question 3 scoring
@@ -241,201 +233,181 @@ function calculateCategoryScores() {
 
     // Question 4 scoring
     if (answers[4] === 'option-4A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
+        scores['sustainablePurchasing'] += 10;
+        scores['environmentalAwareness'] += 10;
     }
     if (answers[4] === 'option-4B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
+        scores['sustainablePurchasing'] += 30;
+        scores['environmentalAwareness'] += 30;
     }
     if (answers[4] === 'option-4C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
+        scores['sustainablePurchasing'] += 10;
+        scores['environmentalAwareness'] += 10;
     }
     if (answers[4] === 'option-4D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
+        scores['sustainablePurchasing'] += 20;
+        scores['environmentalAwareness'] += 20;
     }
 
     // Question 5 scoring
     if (answers[5] === 'option-5A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
+        scores['sustainablePurchasing'] += 10;
+        scores['environmentalAwareness'] += 10;
     }
     if (answers[5] === 'option-5B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
+        scores['sustainablePurchasing'] += 20;
+        scores['environmentalAwareness'] += 20;
     }
     if (answers[5] === 'option-5C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
-    }
-    if (answers[5] === 'option-5D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
+        scores['sustainablePurchasing'] += 30;
+        scores['environmentalAwareness'] += 30;
     }
 
     // Question 6 scoring
     if (answers[6] === 'option-6A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
+        scores['sustainablePurchasing'] += 30;
+        scores['clothingCare'] += 30;
     }
     if (answers[6] === 'option-6B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
+        scores['sustainablePurchasing'] += 20;
+        scores['clothingCare'] += 20;
     }
     if (answers[6] === 'option-6C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
-    }
-    if (answers[6] === 'option-6D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
+        scores['sustainablePurchasing'] += 10;
+        scores['clothingCare'] += 10;
     }
 
     // Question 7 scoring
-    if (answers[7] === 'option-7A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
-    }
-    if (answers[7] === 'option-7B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
-    }
-    if (answers[7] === 'option-7C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
-    }
-    if (answers[7] === 'option-7D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
-    }
+    // if (answers[7] === 'option-7A') {
+    //     scores['sustainablePurchasing'] += 25;
+    //     scores['environmentalAwareness'] += 20;
+    // }
+    // if (answers[7] === 'option-7B') {
+    //     scores['sustainablePurchasing'] += 15;
+    //     scores['attitude'] += 20;
+    // }
+    // if (answers[7] === 'option-7C') {
+    //     scores['clothingCare'] += 20;
+    //     scores['attitude'] += 15;
+    // }
+    // if (answers[7] === 'option-7D') {
+    //     scores['sustainablePurchasing'] += 5;
+    //     scores['environmentalAwareness'] += 10;
+    // }
 
     // Question 8 scoring
     if (answers[8] === 'option-8A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
+        scores['sustainablePurchasing'] += 10;
+        scores['environmentalAwareness'] += 10;
     }
     if (answers[8] === 'option-8B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
+        scores['sustainablePurchasing'] += 20;
+        scores['environmentalAwareness'] += 20;
     }
     if (answers[8] === 'option-8C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
+        scores['sustainablePurchasing'] += 30;
+        scores['environmentalAwareness'] += 30;
     }
     if (answers[8] === 'option-8D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
+        scores['sustainablePurchasing'] += 40;
+        scores['environmentalAwareness'] += 40;
     }
 
     // Question 9 scoring
     if (answers[9] === 'option-9A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
+    //     scores['sustainablePurchasing'] += 25;
+    //     scores['environmentalAwareness'] += 20;
     }
     if (answers[9] === 'option-9B') {
-        scores['sustainablePurchasing'] += 15;
+        scores['sustainablePurchasing'] += 20;
         scores['attitude'] += 20;
     }
     if (answers[9] === 'option-9C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
-    }
-    if (answers[9] === 'option-9D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
+        scores['sustainablePurchasing'] += 20;
+        scores['attitude'] += 10;
     }
 
     // Question 10 scoring
     if (answers[10] === 'option-10A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
+        scores['sustainablePurchasing'] += 10;
+        scores['attitude'] += 10;
     }
     if (answers[10] === 'option-10B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
-    }
-    if (answers[10] === 'option-10C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
-    }
-    if (answers[10] === 'option-10D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
+        scores['sustainablePurchasing'] += 30;
+        scores['attitude'] += 30;
     }
 
     // Question 11 scoring
     if (answers[11] === 'option-11A') {
-        scores['sustainablePurchasing'] += 25;
+        scores['sustainablePurchasing'] += 30;
         scores['environmentalAwareness'] += 20;
     }
     if (answers[11] === 'option-11B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
+        scores['sustainablePurchasing'] += 20;
+        scores['environmentalAwareness'] += 15;
     }
     if (answers[11] === 'option-11C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
+        scores['sustainablePurchasing'] += 10;
+        scores['environmentalAwareness'] += 10;
     }
     if (answers[11] === 'option-11D') {
         scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
+        scores['environmentalAwareness'] += 5;
     }
 
     // Question 12 scoring
     if (answers[12] === 'option-12A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
+        scores['sustainablePurchasing'] += 5;
+        // scores['environmentalAwareness'] += 20;
     }
     if (answers[12] === 'option-12B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
+        scores['sustainablePurchasing'] += 20;
+        // scores['attitude'] += 20;
     }
     if (answers[12] === 'option-12C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
+        scores['sustainablePurchasing'] += 10;
+        // scores['attitude'] += 15;
     }
     if (answers[12] === 'option-12D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
+        scores['sustainablePurchasing'] += 10;
+        // scores['environmentalAwareness'] += 10;
     }
 
     // Question 13 scoring
-    if (answers[13] === 'option-13A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
-    }
-    if (answers[13] === 'option-13B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
-    }
-    if (answers[13] === 'option-13C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
-    }
-    if (answers[13] === 'option-13D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
-    }
+    // if (answers[13] === 'option-13A') {
+    //     scores['sustainablePurchasing'] += 25;
+    //     scores['environmentalAwareness'] += 20;
+    // }
+    // if (answers[13] === 'option-13B') {
+    //     scores['sustainablePurchasing'] += 15;
+    //     scores['attitude'] += 20;
+    // }
+    // if (answers[13] === 'option-13C') {
+    //     scores['clothingCare'] += 20;
+    //     scores['attitude'] += 15;
+    // }
+    // if (answers[13] === 'option-13D') {
+    //     scores['sustainablePurchasing'] += 5;
+    //     scores['environmentalAwareness'] += 10;
+    // }
 
     // Question 14 scoring
-    if (answers[14] === 'option-14A') {
-        scores['sustainablePurchasing'] += 25;
-        scores['environmentalAwareness'] += 20;
-    }
-    if (answers[14] === 'option-14B') {
-        scores['sustainablePurchasing'] += 15;
-        scores['attitude'] += 20;
-    }
-    if (answers[14] === 'option-14C') {
-        scores['clothingCare'] += 20;
-        scores['attitude'] += 15;
-    }
-    if (answers[14] === 'option-14D') {
-        scores['sustainablePurchasing'] += 5;
-        scores['environmentalAwareness'] += 10;
-    }
+    // if (answers[14] === 'option-14A') {
+    //     scores['sustainablePurchasing'] += 25;
+    //     scores['environmentalAwareness'] += 20;
+    // }
+    // if (answers[14] === 'option-14B') {
+    //     scores['sustainablePurchasing'] += 15;
+    //     scores['attitude'] += 20;
+    // }
+    // if (answers[14] === 'option-14C') {
+    //     scores['clothingCare'] += 20;
+    //     scores['attitude'] += 15;
+    // }
+    // if (answers[14] === 'option-14D') {
+    //     scores['sustainablePurchasing'] += 5;
+    //     scores['environmentalAwareness'] += 10;
+    // }
 
     return scores;
 }
