@@ -345,12 +345,12 @@ function calculateCategoryScores() {
         scores['clothingCare'] += 30;
     }
     if (answers[6] === 'option-6B') {
-        scores['sustainablePurchasing'] += 20;
-        scores['clothingCare'] += 20;
-    }
-    if (answers[6] === 'option-6C') {
         scores['sustainablePurchasing'] += 10;
         scores['clothingCare'] += 10;
+    }
+    if (answers[6] === 'option-6C') {
+        scores['sustainablePurchasing'] += 20;
+        scores['clothingCare'] += 20;
     }
 
     // Question 7 scoring
