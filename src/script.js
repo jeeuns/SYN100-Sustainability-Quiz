@@ -18,8 +18,8 @@ const personalityResults = {
     'result1': {
     image: 'img1.jpg',
     title: 'Eco-Warrior Elephant',
-    description: 'Description for result 1',
-    quote: '"Speaking up for people, the planet, and fair fashion.',
+    description: 'The elephant represents those who carry a big heart for the planet and the people on it. They symbolize wisdom, advocacy, and balance, knowing that true sustainability means caring for both the environment and our own well-being. Elephants remind us that speaking up for fair fashion and mindful living can inspire others, but that we don\'t need to shoulder the entire burden alone.',
+    quote: '"Speaking up for people, the planet, and fair fashion."',
     threshold: 80 //80% average score
     },
     'result2': {
@@ -40,7 +40,7 @@ const personalityResults = {
     image: 'img4.jpg',
     title: 'Polyester Penguin',
     description: 'Penguin represents people who love trends and convenience but are starting to realize they may need to shift their habits. They are evolving into a greener wardrobe and turning awareness into action.',
-    quote: '“Even if you\ve been swimming in fast fashion, you can always change direction!”',
+    quote: '“Even if you\'ve been swimming in fast fashion, you can always change direction!”',
     threshold: 0 //0-39% average score
     }
 };
