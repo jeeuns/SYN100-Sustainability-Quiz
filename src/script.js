@@ -485,28 +485,36 @@ function generateCareCardContent(categoryScores, resultType) {
         'sustainablePurchasing': {
             header: 'Sustainable Purchasing',
             description: `
-                    <p>Explanation</p>
+                    <h4>Why Wear Sustainable Clothing?</h4>
+                        <p>\tSustainable purchasing means making mindful decisions about the clothes we buy, where instead of chasing fast, cheap trends, it focuses on quality, durability, and ethical production. Opting for sustainable clothing helps cut down the drastic environmental costs of fast fashion.</p>
+                        <p>\tIf you are new to sustainable fashion, the price tags may seem more expensive, but it is important to understand that these brands are not meant to be consumed like fast fashion and instead are built for longevity.</p>
             `,
-            tip: 'Tip',
+            tip: 'Tips for Shopping Sustainably',
             bulletpoint: `
                     <ul>
-                        <li>Bullet1</li>
-                        <li>Bullet2</li>
-                        <li>Bullet3</li>
+                        <li>Always prioritize <strong>natural fabrics</strong> such as organic cotton, linen, or hemp, while also making sure to purchase high-quality garments that are built to last.</li>
+                        <li>Take time and research manufacturing process of the brands you intend to buy from, where you are on the lookout for certain certifications like:</li>
+                            <ul>
+                                <li><strong>Fair Trade</strong>, which guarantees fair wages and safe working conditions.</li>
+                                <li><strong>GOTS (Global Organic Textile Standard)</strong>, which verifies organic status of fabrics.</li>
+                                <li><strong>OEKO-TEX</strong>, which certifies that textiles are free from harmful substances.</li>
+                            </ul>
+                        <li>Instead of buying new clothing, consider pre-owned apparel by exploring your local thrift store.</li>
+                        <li>Do your part in supporting sustainable approaches that promote recycling and upcycling in the fashion industry.</li>
                     </ul>
             `,
-            resourceLink: '',
+            resourceLink: 'https://www.thegoodtrade.com/features/fair-trade-clothing/',
             image: 'image.png'
         },
         'clothingCare': {
-            header: 'Clothing Care - Sustainable Practices',
+            header: 'Sustainable Clothing Practices',
             description: `
-                <h4>What are microfibers?</h4>
+                <h4>What Are Microfibers?</h4>
                     <p>\tMicrofibers are tiny plastic fragments that are released from synthetic textiles especially as they are worn and washed.</p>
                     <p>\tMicrofibers commonly enter wastewater streams during laundry activities and pollute the oceans, as most wastewater treatment plants lack the advanced filtration process required to remove microplastics.</p>
                     <p>\tWhile preference for natural textiles is an effective choice to help eliminate the presence of non-biodegradable MF's in the environment, certain laundry conditions and practices can help to reduce MF shedding.</p>
             `,
-            tip: 'Here are some mindful laundry practices to reduce microfiber shedding!',
+            tip: 'Tips to Reduce Microfiber Shedding When Doing Laundry',
             bulletpoint: `
                     <ul>
                         <li>Run <strong>full loads</strong> to reduce the amount of friction garments are exposed to.</li>
@@ -522,34 +530,43 @@ function generateCareCardContent(categoryScores, resultType) {
         'attitude': {
             header: 'Climate Attitude',
             description: `
-                    <p>Explanation</p>
-            `,
-            tip: 'Tip',
+                <h4>How Does Mental Health And Climate Awareness Relate to Fast Fashion?</h4>
+                    <p>\tStudies have shown that people tend to have a bit of a distorted perception about things when it comes to fast fashion. Most consumers will perceive themselves as having more knowledge than they actually do on the subject, and most people have a general knowledge while lacking concise knowledge.</p>
+                    <p>\tAdditionally, many consumers rely on retailers to educate them on the clothing materials and communicate ethical practices; however, in reality, retailers will not always do this honestly.</p>
+                    <p>\tDue to fast fashion's negative impact on the environment and people in intense ways, such as pollution and labor exploitation, people tend to have strong negative feelings about it.</p>
+                    <p>\tStudies have shown that sometimes strong feelings can lead to overwhelming and unhealthy coping mechanisms like denial and apathy. This is why it is important to take care of our own mental health so we can face these things in a way that is manageable for us and take action instead of shutting down.</p>
+                    <p>\tDespite there actually being a lot of awareness around the topic of fast fashion, there are very low percentages of people actually participating in sustainable purchasing, <strong>only around 20%</strong>. This incongruence between attitude or awareness and actual action is likely due to a few factors, and mental health is definitely one of them.</p>
+                    `,
+            tip: 'How to Optimize Your Mental Health to be a Better Consumer',
             bulletpoint: `
                     <ul>
-                        <li>Bullet1</li>
-                        <li>Bullet2</li>
-                        <li>Bullet3</li>
+                        <li>Remember to take care of yourself and be kind; overwhelming guilt and self-criticism are unhelpful 100% of the time, and you will be more likely to make positive changes in your lifestyle that help the environment when you are kind to yourself.</li>
+                        <li>Find ways to connect with nature and the people around you, and practice empathy. Our disconnect from nature not only negatively impacts our mental health personally, but also negatively impacts our ability to see the ways in which we rely on nature, and connecting with it will motivate us to help ourselves and the planet.</li>
+                        <li>Practice empathy; the more we can feel emotionally connected to those who are suffering from climate change, without separating them from ourselves, the more we will be able to see how much we need change. Empathize with nature, too. If we can feel hurt for the planet and the way it is hurting, then maybe we can see how much we benefit from helping it.</li>
+                        <li>Educate yourself when you can on how to make more sustainable clothing choices and how to make manageable changes in a way that is sensitive to your circumstances and mental health. Remember that companies won't always be honest or upfront about their practices.</li>
                     </ul>
             `,
-            resourceLink: '',
+            resourceLink: 'https://vinatex.com/fast-fashion-fuels-mental-health-struggles-among-gen-z/',
             image: 'image.png'
         },
         'environmentalawareness': {
             header: 'Environmental Awareness',
             description: `
-                    <p>Explanation</p>
+                <p>\t<italic>Polyester (left) showed limited signs of degradation while lyocell, a wood-based material (right), showed full degradation under marine conditions (Royer et al., 2021).</italic></p>
+                <h4>Plastic Pollution</h4>
+                    <p>\tThe UN estimates that 19-23 million tons of plastic waste enter marine environments annually, owing to waste mismanagement and plastic overconsumption.
+                    Relatedly, global fiber production is undergoing a dramatic shift towards synthetic textiles which account for 62% of the current market compared to less than 10% in the 1970s.
+                    Whether in landfills or the ocean, fabrics like polyester and acrylic are enduring pollutants. </p>
+                <h4>Are Natural Fibers Good?</h4>
+                    <p>\tAlthough natural fibers are biodegradable, they are not inherently sustainable. Water waste and deforestation are assured consequences in the production of natural textiles. In fact, denim and cotton production require substantially more water than polyester production.</p>
+                    <p>\t<italic>→ One cotton shirt requires approximately 3,000 liters of water to produce, and a pair of jeans requires almost 4,000 liters.</italic></p>
+                    <p>\tAdditionally, be wary of greenwashing in the marketing of semi-synthetics, namely viscose. Viscose is derived from wood pulp and is biodegradable; however, its intensive production and chemical processing result in greater greenhouse gas emissions and the pollution of toxic chemicals compared to other biodegradable textiles.</p>
+                    <p>\tThe overconsumption of any product draws its own set of environmental impacts. Overconsumption can best be challenged with consumer mindfulness which can be developed through the process of educating oneself.<strong>At your next purchase, try considering brand ethics, production processes, and the impact of materials on the environment.</strong></p>
             `,
-            tip: 'Tip',
-            bulletpoint: `
-                    <ul>
-                        <li>Bullet1</li>
-                        <li>Bullet2</li>
-                        <li>Bullet3</li>
-                    </ul>
-            `,
-            resourceLink: '',
-            image: 'image.png'
+            tip: '',
+            bulletpoint: ``,
+            resourceLink: 'https://theflaw.org/articles/project-rapid-runway-unraveling-the-insidious-threads-of-fast-fashion/',
+            image: 'assets/EnvironmentalAwareness.png'
         }
     };
 
