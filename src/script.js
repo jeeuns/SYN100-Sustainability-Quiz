@@ -552,7 +552,7 @@ function generateCareCardContent(categoryScores, resultType) {
         'environmentalawareness': {
             header: 'Environmental Awareness',
             description: `
-                <p>\t<italic>Polyester (left) showed limited signs of degradation while lyocell, a wood-based material (right), showed full degradation under marine conditions (Royer et al., 2021).</italic></p>
+                <p>\t<italic>Polyester (above) showed limited signs of degradation while lyocell, a wood-based material (right), showed full degradation under marine conditions (Royer et al., 2021).</italic></p>
                 <h4>Plastic Pollution</h4>
                     <p>\tThe UN estimates that 19-23 million tons of plastic waste enter marine environments annually, owing to waste mismanagement and plastic overconsumption.
                     Relatedly, global fiber production is undergoing a dramatic shift towards synthetic textiles which account for 62% of the current market compared to less than 10% in the 1970s.
