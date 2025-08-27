@@ -485,20 +485,15 @@ function generateCareCardContent(categoryScores, resultType) {
         'sustainablePurchasing': {
             header: 'Sustainable Purchasing',
             description: `
-                <div class="cc-desc">
-                    <h4>Header</h4>
                     <p>Explanation</p>
-                    <div class= "cc-tip">
-                        <h4>Tips</h4>
-                        <div class="bullet-list">
-                            <ul>
-                                <li>Bullet1</li>
-                                <li>Bullet2</li>
-                                <li>Bullet3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            `,
+            tip: 'Tip',
+            bulletpoint: `
+                    <ul>
+                        <li>Bullet1</li>
+                        <li>Bullet2</li>
+                        <li>Bullet3</li>
+                    </ul>
             `,
             resourceLink: '',
             image: 'image.png'
@@ -506,25 +501,20 @@ function generateCareCardContent(categoryScores, resultType) {
         'clothingCare': {
             header: 'Clothing Care - Sustainable Practices',
             description: `
-                <div class="cc-desc">
-                    <h4>What are microfibers?</h4>
-                    <p>Microfibers are tiny plastic fragments that are released from synthetic textiles especially as they are worn and washed.</p>
-                    <p>Microfibers commonly enter wastewater streams during laundry activities and pollute the oceans, as most wastewater treatment plants lack the advanced filtration process required to remove microplastics.</p>
-                    <p>While preference for natural textiles is an effective choice to help eliminate the presence of non-biodegradable MF's in the environment, certain laundry conditions and practices can help to reduce MF shedding.</p>
-                    
-                    <div class="cc-tip">
-                        <h4>Here are some mindful laundry practices to reduce microfiber shedding!</h4>
-                        <div class="bullet-list">
-                            <ul>
-                                <li>Run <strong>full loads</strong> to reduce the amount of friction garments are exposed to.</li>
-                                <li>Set laundry cycles to <strong>delicate</strong>. Low abrasion and low spin help reduce MF release.</li>
-                                <li>Use <strong>cold water</strong> rather than hot water.</li>
-                                <li>Use <strong>less detergent</strong> and opt for <strong>liquid detergents</strong> over powder detergents which contain insoluble, abrasive particles.</li>
-                                <li><strong>Air-dry</strong> clothes rather than using the drying machine, as MF shedding occurs in the dryer as well.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <h4>What are microfibers?</h4>
+                    <p>\tMicrofibers are tiny plastic fragments that are released from synthetic textiles especially as they are worn and washed.</p>
+                    <p>\tMicrofibers commonly enter wastewater streams during laundry activities and pollute the oceans, as most wastewater treatment plants lack the advanced filtration process required to remove microplastics.</p>
+                    <p>\tWhile preference for natural textiles is an effective choice to help eliminate the presence of non-biodegradable MF's in the environment, certain laundry conditions and practices can help to reduce MF shedding.</p>
+            `,
+            tip: 'Here are some mindful laundry practices to reduce microfiber shedding!',
+            bulletpoint: `
+                    <ul>
+                        <li>Run <strong>full loads</strong> to reduce the amount of friction garments are exposed to.</li>
+                        <li>Set laundry cycles to <strong>delicate</strong>. Low abrasion and low spin help reduce MF release.</li>
+                        <li>Use <strong>cold water</strong> rather than hot water.</li>
+                        <li>Use <strong>less detergent</strong> and opt for <strong>liquid detergents</strong> over powder detergents which contain insoluble, abrasive particles.</li>
+                        <li><strong>Air-dry</strong> clothes rather than using the drying machine, as MF shedding occurs in the dryer as well.</li>
+                    </ul>
             `,
             resourceLink: 'https://www.pbs.org/newshour/science/laundry-is-a-top-source-of-microplastic-pollution-heres-how-to-clean-your-clothes-more-sustainably',
             image: 'assets/ccimg.jpg'
@@ -532,20 +522,15 @@ function generateCareCardContent(categoryScores, resultType) {
         'attitude': {
             header: 'Climate Attitude',
             description: `
-                <div class="cc-desc">
-                    <h4>Header</h4>
                     <p>Explanation</p>
-                    <div class= "cc-tip">
-                        <h4>Tips</h4>
-                        <div class="bullet-list">
-                            <ul>
-                                <li>Bullet1</li>
-                                <li>Bullet2</li>
-                                <li>Bullet3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            `,
+            tip: 'Tip',
+            bulletpoint: `
+                    <ul>
+                        <li>Bullet1</li>
+                        <li>Bullet2</li>
+                        <li>Bullet3</li>
+                    </ul>
             `,
             resourceLink: '',
             image: 'image.png'
@@ -553,21 +538,15 @@ function generateCareCardContent(categoryScores, resultType) {
         'environmentalawareness': {
             header: 'Environmental Awareness',
             description: `
-                <div class="cc-desc">
-                    <h4>Header</h4>
                     <p>Explanation</p>
-
-                    <div class= "cc-tip">
-                        <h4>Tips</h4>
-                        <div class="bullet-list">
-                            <ul>
-                                <li>Bullet1</li>
-                                <li>Bullet2</li>
-                                <li>Bullet3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            `,
+            tip: 'Tip',
+            bulletpoint: `
+                    <ul>
+                        <li>Bullet1</li>
+                        <li>Bullet2</li>
+                        <li>Bullet3</li>
+                    </ul>
             `,
             resourceLink: '',
             image: 'image.png'
@@ -625,7 +604,7 @@ function determineResultType(categoryScores) {
     }
 }
 
-// RESULT SCREEN - shows all categories, the card, the carecard.
+// RESULT SCREEN UPDATED
 function showResults() {
     // Hide current question and navigation
     document.getElementById(`question-${currentQuestion}`).classList.remove('active');
@@ -664,7 +643,13 @@ function showResults() {
         <div class="care-card-section">
             <h2 class="care-card-title">Your Care Card</h2>
             <h3 class="care-card-header">${careCard.header}</h3>
-            <p class="care-card-description">${careCard.description}</p>
+            <div class="care-card-image">
+                <img src="${careCard.image}" alt="${careCard.header}" />
+            </div>
+            <div class="care-card-description">${careCard.description}</div>
+            <h4 class="care-card-tip">${careCard.tip}</h4>
+            <div class="care-card-bulletpoint">${careCard.bulletpoint}</div>
+            
             <a href="${careCard.resourceLink}" target="_blank" class="care-card-resource-link">
                 Learn More →
             </a>
