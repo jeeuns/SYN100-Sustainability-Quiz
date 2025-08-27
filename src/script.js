@@ -485,42 +485,45 @@ function generateCareCardContent(categoryScores, resultType) {
         'sustainablePurchasing': {
             header: 'Sustainable Purchasing',
             description: `
-                <div class="microfiber-content">
-                    <h4>What are microfibers?</h4>
-                    <p>Microfibers are tiny plastic fragments that are released from synthetic textiles especially as they are worn and washed.</p>
-                    <p>Microfibers commonly enter wastewater streams during laundry activities and pollute the oceans, as most wastewater treatment plants lack the advanced filtration process required to remove microplastics.</p>
-                    <p>While preference for natural textiles is an effective choice to help eliminate the presence of non-biodegradable MF's in the environment, certain laundry conditions and practices can help to reduce MF shedding.</p>
-                    
-                    <h4>Here are some mindful laundry practices to reduce microfiber shedding!</h4>
-                    <ul>
-                        <li>Run <strong>full loads</strong> to reduce the amount of friction garments are exposed to.</li>
-                        <li>Set laundry cycles to <strong>delicate</strong>. Low abrasion and low spin help reduce MF release.</li>
-                        <li>Use <strong>cold water</strong> rather than hot water.</li>
-                        <li>Use <strong>less detergent</strong> and opt for <strong>liquid detergents</strong> over powder detergents which contain insoluble, abrasive particles.</li>
-                        <li><strong>Air-dry</strong> clothes rather than using the drying machine, as MF shedding occurs in the dryer as well.</li>
-                    </ul>
+                <div class="cc-desc">
+                    <h4>Header</h4>
+                    <p>Explanation</p>
+                    <div class= "cc-tip">
+                        <h4>Tips</h4>
+                        <div class="bullet-list">
+                            <ul>
+                                <li>Bullet1</li>
+                                <li>Bullet2</li>
+                                <li>Bullet3</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             `,
-            resourceLink: 'https://www.pbs.org/newshour/science/laundry-is-a-top-source-of-microplastic-pollution-heres-how-to-clean-your-clothes-more-sustainably',
-            image: 'assets/ccimg.jpg'
+            resourceLink: '',
+            image: 'image.png'
         },
         'clothingCare': {
             header: 'Clothing Care - Sustainable Practices',
             description: `
-                <div class="microfiber-content">
+                <div class="cc-desc">
                     <h4>What are microfibers?</h4>
                     <p>Microfibers are tiny plastic fragments that are released from synthetic textiles especially as they are worn and washed.</p>
                     <p>Microfibers commonly enter wastewater streams during laundry activities and pollute the oceans, as most wastewater treatment plants lack the advanced filtration process required to remove microplastics.</p>
                     <p>While preference for natural textiles is an effective choice to help eliminate the presence of non-biodegradable MF's in the environment, certain laundry conditions and practices can help to reduce MF shedding.</p>
                     
-                    <h4>Here are some mindful laundry practices to reduce microfiber shedding!</h4>
-                    <ul>
-                        <li>Run <strong>full loads</strong> to reduce the amount of friction garments are exposed to.</li>
-                        <li>Set laundry cycles to <strong>delicate</strong>. Low abrasion and low spin help reduce MF release.</li>
-                        <li>Use <strong>cold water</strong> rather than hot water.</li>
-                        <li>Use <strong>less detergent</strong> and opt for <strong>liquid detergents</strong> over powder detergents which contain insoluble, abrasive particles.</li>
-                        <li><strong>Air-dry</strong> clothes rather than using the drying machine, as MF shedding occurs in the dryer as well.</li>
-                    </ul>
+                    <div class="cc-tip">
+                        <h4>Here are some mindful laundry practices to reduce microfiber shedding!</h4>
+                        <div class="bullet-list">
+                            <ul>
+                                <li>Run <strong>full loads</strong> to reduce the amount of friction garments are exposed to.</li>
+                                <li>Set laundry cycles to <strong>delicate</strong>. Low abrasion and low spin help reduce MF release.</li>
+                                <li>Use <strong>cold water</strong> rather than hot water.</li>
+                                <li>Use <strong>less detergent</strong> and opt for <strong>liquid detergents</strong> over powder detergents which contain insoluble, abrasive particles.</li>
+                                <li><strong>Air-dry</strong> clothes rather than using the drying machine, as MF shedding occurs in the dryer as well.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             `,
             resourceLink: 'https://www.pbs.org/newshour/science/laundry-is-a-top-source-of-microplastic-pollution-heres-how-to-clean-your-clothes-more-sustainably',
@@ -529,46 +532,45 @@ function generateCareCardContent(categoryScores, resultType) {
         'attitude': {
             header: 'Climate Attitude',
             description: `
-                <div class="microfiber-content">
-                    <h4>What are microfibers?</h4>
-                    <p>Microfibers are tiny plastic fragments that are released from synthetic textiles especially as they are worn and washed.</p>
-                    <p>Microfibers commonly enter wastewater streams during laundry activities and pollute the oceans, as most wastewater treatment plants lack the advanced filtration process required to remove microplastics.</p>
-                    <p>While preference for natural textiles is an effective choice to help eliminate the presence of non-biodegradable MF's in the environment, certain laundry conditions and practices can help to reduce MF shedding.</p>
-                    
-                    <h4>Here are some mindful laundry practices to reduce microfiber shedding!</h4>
-                    <ul>
-                        <li>Run <strong>full loads</strong> to reduce the amount of friction garments are exposed to.</li>
-                        <li>Set laundry cycles to <strong>delicate</strong>. Low abrasion and low spin help reduce MF release.</li>
-                        <li>Use <strong>cold water</strong> rather than hot water.</li>
-                        <li>Use <strong>less detergent</strong> and opt for <strong>liquid detergents</strong> over powder detergents which contain insoluble, abrasive particles.</li>
-                        <li><strong>Air-dry</strong> clothes rather than using the drying machine, as MF shedding occurs in the dryer as well.</li>
-                    </ul>
+                <div class="cc-desc">
+                    <h4>Header</h4>
+                    <p>Explanation</p>
+                    <div class= "cc-tip">
+                        <h4>Tips</h4>
+                        <div class="bullet-list">
+                            <ul>
+                                <li>Bullet1</li>
+                                <li>Bullet2</li>
+                                <li>Bullet3</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             `,
-            resourceLink: 'https://www.pbs.org/newshour/science/laundry-is-a-top-source-of-microplastic-pollution-heres-how-to-clean-your-clothes-more-sustainably',
-            image: 'assets/ccimg.jpg'
+            resourceLink: '',
+            image: 'image.png'
         },
         'environmentalawareness': {
             header: 'Environmental Awareness',
             description: `
-                <div class="microfiber-content">
-                    <h4>What are microfibers?</h4>
-                    <p>Microfibers are tiny plastic fragments that are released from synthetic textiles especially as they are worn and washed.</p>
-                    <p>Microfibers commonly enter wastewater streams during laundry activities and pollute the oceans, as most wastewater treatment plants lack the advanced filtration process required to remove microplastics.</p>
-                    <p>While preference for natural textiles is an effective choice to help eliminate the presence of non-biodegradable MF's in the environment, certain laundry conditions and practices can help to reduce MF shedding.</p>
-                    
-                    <h4>Here are some mindful laundry practices to reduce microfiber shedding!</h4>
-                    <ul>
-                        <li>Run <strong>full loads</strong> to reduce the amount of friction garments are exposed to.</li>
-                        <li>Set laundry cycles to <strong>delicate</strong>. Low abrasion and low spin help reduce MF release.</li>
-                        <li>Use <strong>cold water</strong> rather than hot water.</li>
-                        <li>Use <strong>less detergent</strong> and opt for <strong>liquid detergents</strong> over powder detergents which contain insoluble, abrasive particles.</li>
-                        <li><strong>Air-dry</strong> clothes rather than using the drying machine, as MF shedding occurs in the dryer as well.</li>
-                    </ul>
+                <div class="cc-desc">
+                    <h4>Header</h4>
+                    <p>Explanation</p>
+
+                    <div class= "cc-tip">
+                        <h4>Tips</h4>
+                        <div class="bullet-list">
+                            <ul>
+                                <li>Bullet1</li>
+                                <li>Bullet2</li>
+                                <li>Bullet3</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             `,
-            resourceLink: 'https://www.pbs.org/newshour/science/laundry-is-a-top-source-of-microplastic-pollution-heres-how-to-clean-your-clothes-more-sustainably',
-            image: 'assets/ccimg.jpg'
+            resourceLink: '',
+            image: 'image.png'
         }
     };
 
