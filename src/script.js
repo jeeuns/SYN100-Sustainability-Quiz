@@ -23,7 +23,7 @@ const personalityResults = {
     threshold: 80 //80% average score
     },
     'result2': {
-    image: 'assets/ThriftyTiger.png',
+    image: 'assets/thriftytiger.png',
     title: 'Thrifty Tiger',
     description: 'Tiger is the bold shopper who seeks treasures responsibly. They represent smart, sustainable buying habits and fiercely believe that thrifting is a way to play a part in helping their environment.',
     quote: '“Wild about second-hand!”',
