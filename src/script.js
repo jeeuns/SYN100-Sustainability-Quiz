@@ -48,22 +48,22 @@ const personalityResults = {
 const categories = {
     'sustainablePurchasing': {
         name: 'Sustainable Purchasing',
-        description: 'sustainable purchasing practice',
+        description: 'How your shopping choices affect the planet.',
         image: 'assets/moneybag.png',
     },
     'environmentalAwareness': {
         name: 'Environmental Awareness',
-        description: 'understanding of fast fashion impact',
+        description: 'Your understanding of fast fashion’s impact on the planet.',
         image: 'assets/earth.png',
     },
     'clothingCare': {
         name: 'Clothing Care',
-        description: 'best practices for clothing care',
+        description: 'Your habits for keeping clothes lasting longer and waste-free.',
         image: 'assets/tshirt.png',
     },
     'attitude': {
         name: 'Climate Attitude',
-        description: 'sustainable practices for your mental health',
+        description: 'Your outlook on sustainability and how it supports your mental well-being.',
         image: 'assets/face.png',
     },
 };
@@ -237,13 +237,15 @@ function updateNavigationButtons() {
 
 function calculateCategoryScores() {
     const scores = {
-    'sustainablePurchasing': 0,
-    'environmentalAwareness': 0,
-    'clothingCare': 0,
-    'attitude': 0
+        'sustainablePurchasing': 0,
+        'environmentalAwareness': 0,
+        'clothingCare': 0,
+        'attitude': 0
     };
 
-// Question 1 scoring - adjust these based on actual questions
+    //ADJUSTED POINTS TO FIT MAX, Realized there was a balancing problem, almost impossible to get certain category results.
+
+    // Question 1
     if (answers[1] === 'option-1A') {
         scores['sustainablePurchasing'] += 10;
         scores['attitude'] += 5;
@@ -257,7 +259,7 @@ function calculateCategoryScores() {
         scores['attitude'] += 15;
     }
 
-    // Question 2 scoring
+    // Question 2
     if (answers[2] === 'option-2A') {
         scores['attitude'] += 5;
         scores['environmentalAwareness'] += 15;
@@ -271,7 +273,7 @@ function calculateCategoryScores() {
         scores['environmentalAwareness'] += 5;
     }
 
-    // Question 3 scoring
+    // Question 3
     if (answers[3] === 'option-3A') {
         scores['attitude'] += 25;
         scores['environmentalAwareness'] += 20;
@@ -289,7 +291,7 @@ function calculateCategoryScores() {
         scores['environmentalAwareness'] += 10;
     }
 
-    // Question 4 scoring
+    // Question 4
     if (answers[4] === 'option-4A') {
         scores['sustainablePurchasing'] += 10;
         scores['environmentalAwareness'] += 10;
@@ -307,7 +309,7 @@ function calculateCategoryScores() {
         scores['environmentalAwareness'] += 20;
     }
 
-    // Question 5 scoring
+    // Question 5: Check fiber content label (PRESERVED ORIGINAL)
     if (answers[5] === 'option-5A') {
         scores['sustainablePurchasing'] += 10;
         scores['environmentalAwareness'] += 10;
@@ -321,7 +323,7 @@ function calculateCategoryScores() {
         scores['environmentalAwareness'] += 30;
     }
 
-    // Question 6 scoring
+    // Question 6: Laundry load size (PRESERVED ORIGINAL)
     if (answers[6] === 'option-6A') {
         scores['sustainablePurchasing'] += 30;
         scores['clothingCare'] += 30;
@@ -335,25 +337,9 @@ function calculateCategoryScores() {
         scores['clothingCare'] += 20;
     }
 
-    // Question 7 scoring
-    // if (answers[7] === 'option-7A') {
-    //     scores['sustainablePurchasing'] += 25;
-    //     scores['environmentalAwareness'] += 20;
-    // }
-    // if (answers[7] === 'option-7B') {
-    //     scores['sustainablePurchasing'] += 15;
-    //     scores['attitude'] += 20;
-    // }
-    // if (answers[7] === 'option-7C') {
-    //     scores['clothingCare'] += 20;
-    //     scores['attitude'] += 15;
-    // }
-    // if (answers[7] === 'option-7D') {
-    //     scores['sustainablePurchasing'] += 5;
-    //     scores['environmentalAwareness'] += 10;
-    // }
+    // Questions 7, 13, 14: Educational questions - NO POINTS AWARDED
 
-    // Question 8 scoring
+    // Question 8: How long keep clothes (PRESERVED ORIGINAL)
     if (answers[8] === 'option-8A') {
         scores['sustainablePurchasing'] += 10;
         scores['environmentalAwareness'] += 10;
@@ -371,21 +357,22 @@ function calculateCategoryScores() {
         scores['environmentalAwareness'] += 40;
     }
 
-    // Question 9 scoring
+    // Question 9:
     if (answers[9] === 'option-9A') {
-    //     scores['sustainablePurchasing'] += 25;
-    //     scores['environmentalAwareness'] += 20;
+        // 0 points 
     }
-    if (answers[9] === 'option-9B') {
+    if (answers[9] === 'option-9B') { // Donate to family/friends
         scores['sustainablePurchasing'] += 20;
         scores['attitude'] += 20;
+        scores['environmentalAwareness'] += 15;
     }
-    if (answers[9] === 'option-9C') {
-        scores['sustainablePurchasing'] += 20;
-        scores['attitude'] += 10;
+    if (answers[9] === 'option-9C') { // Re-sell
+        scores['sustainablePurchasing'] += 25;
+        scores['attitude'] += 15;
+        scores['environmentalAwareness'] += 20;
     }
 
-    // Question 10 scoring
+    // Question 10
     if (answers[10] === 'option-10A') {
         scores['sustainablePurchasing'] += 10;
         scores['attitude'] += 10;
@@ -395,7 +382,7 @@ function calculateCategoryScores() {
         scores['attitude'] += 30;
     }
 
-    // Question 11 scoring
+    // Question 11
     if (answers[11] === 'option-11A') {
         scores['sustainablePurchasing'] += 30;
         scores['environmentalAwareness'] += 20;
@@ -413,63 +400,25 @@ function calculateCategoryScores() {
         scores['environmentalAwareness'] += 5;
     }
 
-    // Question 12 scoring
+    // Question 12
     if (answers[12] === 'option-12A') {
         scores['sustainablePurchasing'] += 5;
-        // scores['environmentalAwareness'] += 20;
     }
     if (answers[12] === 'option-12B') {
         scores['sustainablePurchasing'] += 20;
-        // scores['attitude'] += 20;
+        scores['environmentalAwareness'] += 20;
+        scores['clothingCare'] += 20;
     }
     if (answers[12] === 'option-12C') {
         scores['sustainablePurchasing'] += 10;
-        // scores['attitude'] += 15;
     }
-    if (answers[12] === 'option-12D') {
+    if (answers[12] === 'option-12D') { 
         scores['sustainablePurchasing'] += 10;
-        // scores['environmentalAwareness'] += 10;
+        scores['attitude'] += 5;
     }
-
-    // Question 13 scoring
-    // if (answers[13] === 'option-13A') {
-    //     scores['sustainablePurchasing'] += 25;
-    //     scores['environmentalAwareness'] += 20;
-    // }
-    // if (answers[13] === 'option-13B') {
-    //     scores['sustainablePurchasing'] += 15;
-    //     scores['attitude'] += 20;
-    // }
-    // if (answers[13] === 'option-13C') {
-    //     scores['clothingCare'] += 20;
-    //     scores['attitude'] += 15;
-    // }
-    // if (answers[13] === 'option-13D') {
-    //     scores['sustainablePurchasing'] += 5;
-    //     scores['environmentalAwareness'] += 10;
-    // }
-
-    // Question 14 scoring
-    // if (answers[14] === 'option-14A') {
-    //     scores['sustainablePurchasing'] += 25;
-    //     scores['environmentalAwareness'] += 20;
-    // }
-    // if (answers[14] === 'option-14B') {
-    //     scores['sustainablePurchasing'] += 15;
-    //     scores['attitude'] += 20;
-    // }
-    // if (answers[14] === 'option-14C') {
-    //     scores['clothingCare'] += 20;
-    //     scores['attitude'] += 15;
-    // }
-    // if (answers[14] === 'option-14D') {
-    //     scores['sustainablePurchasing'] += 5;
-    //     scores['environmentalAwareness'] += 10;
-    // }
 
     return scores;
 }
-
 
 function generateCareCardContent(categoryScores, resultType) {
     const scoresOutOf10 = convertScoresToOutOf10(categoryScores);
@@ -504,7 +453,7 @@ function generateCareCardContent(categoryScores, resultType) {
                     </ul>
             `,
             resourceLink: 'https://www.thegoodtrade.com/features/fair-trade-clothing/',
-            image: 'image.png'
+            image: ''
         },
         'clothingCare': {
             header: 'Sustainable Clothing Practices',
@@ -547,7 +496,7 @@ function generateCareCardContent(categoryScores, resultType) {
                     </ul>
             `,
             resourceLink: 'https://vinatex.com/fast-fashion-fuels-mental-health-struggles-among-gen-z/',
-            image: 'image.png'
+            image: ''
         },
         'environmentalawareness': {
             header: 'Environmental Awareness',
@@ -576,10 +525,10 @@ function generateCareCardContent(categoryScores, resultType) {
 // UPDATED CONVERT SCORE FUNCTION!!
 function convertScoresToOutOf10(categoryScores) {
     const maxPoints = {
-        'sustainablePurchasing': 185,
-        'environmentalAwareness': 155,
-        'clothingCare': 60,
-        'attitude': 105
+        'sustainablePurchasing': 225,
+        'environmentalAwareness': 190,
+        'clothingCare': 80,
+        'attitude': 110
     };
     
     const scoresOutOf10 = {};
@@ -595,26 +544,23 @@ function convertScoresToOutOf10(categoryScores) {
 // UPDATED PERSONALITY RESULT LOGIC
 function determineResultType(categoryScores) {
     const maxPoints = {
-        'sustainablePurchasing': 185,
-        'environmentalAwareness': 155,
-        'clothingCare': 60,
-        'attitude': 105
+        sustainablePurchasing: 225,
+        environmentalAwareness: 190,
+        clothingCare: 80,
+        attitude: 110
     };
-    // Calculate percentage for each category
-    const categoryPercentages = {};
+
     let totalPercentage = 0;
-    
     Object.keys(categoryScores).forEach(key => {
-        categoryPercentages[key] = (categoryScores[key] / maxPoints[key]) * 100;
-        totalPercentage += categoryPercentages[key];
+        totalPercentage += (categoryScores[key] / maxPoints[key]) * 100;
     });
-    
     const averagePercentage = totalPercentage / 4;
-    if (averagePercentage >= personalityResults['result1'].threshold) {
+
+    if (averagePercentage >= personalityResults.result1.threshold) {
         return 'result1';
-    } else if (averagePercentage >= personalityResults['result2'].threshold) {
+    } else if (averagePercentage >= personalityResults.result2.threshold) {
         return 'result2';
-    } else if (averagePercentage >= personalityResults['result3'].threshold) {
+    } else if (averagePercentage >= personalityResults.result3.threshold) {
         return 'result3';
     } else {
         return 'result4';
@@ -660,9 +606,11 @@ function showResults() {
         <div class="care-card-section">
             <h2 class="care-card-title">Your Care Card</h2>
             <h3 class="care-card-header">${careCard.header}</h3>
+            ${careCard.image ? `
             <div class="care-card-image">
                 <img src="${careCard.image}" alt="${careCard.header}" />
             </div>
+            ` : ''}
             <div class="care-card-description">${careCard.description}</div>
             <h4 class="care-card-tip">${careCard.tip}</h4>
             <div class="care-card-bulletpoint">${careCard.bulletpoint}</div>
